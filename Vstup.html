@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vstup pro předplatitele | HEALLO®</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #3A6B62; /* Zelená z JEZ */
+            --accent: #D65A49;  /* Červená z JEZ */
+            --bg: #FDFBF6;
+            --text: #2C3635;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(58, 107, 98, 0.15);
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            letter-spacing: 5px; /* Aby čísla byla dál od sebe */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            outline: none;
+            transition: 0.3s;
+            color: var(--primary);
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(58, 107, 98, 0.1);
+        }
+
+        /* Skryje placeholder při psaní, aby nerušil */
+        input:not(:placeholder-shown) {
+            letter-spacing: 8px; 
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2a524a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(58, 107, 98, 0.2);
+        }
+
+        .logo-img {
+            width: 80px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .error-msg {
+            color: #d9534f;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none; /* Skryté defaultně */
+        }
+        
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h1>Vítej v členské sekci</h1>
+        <p>Zadej svůj 8místný přístupový kód pro odemčení obsahu.</p>
+
+        <form id="accessForm">
+            <div class="input-group">
+                <input type="text" id="passcode" placeholder="••••••••" maxlength="20" autocomplete="off" required>
+            </div>
+            
+            <button type="submit" class="btn">Odemknout</button>
+            
+            <div id="errorMsg" class="error-msg">
+                Stránka s tímto kódem nebyla nalezena. Zkontroluj kód.
+            </div>
+        </form>
+
+        <div class="footer-note">
+            HEALLO® | JEZ, you can! | Psycho-logicky
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('accessForm');
+        const input = document.getElementById('passcode');
+        const errorMsg = document.getElementById('errorMsg');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Zabrání klasickému odeslání
+            
+            // Získáme kód, odstraníme mezery a převedeme na malá písmena
+            let code = input.value.trim().toLowerCase();
+
+            if (code) {
+                // Přesměruje na stránku [kod].html
+                // Například kód "12345678" zkusí otevřít "12345678.html"
+                
+                // Kontrola existence stránky na GitHub Pages je trik:
+                // Prostě tam uživatele pošleme. Pokud kód neexistuje, GitHub zobrazí 404.
+                window.location.href = code + ".html";
+            }
+        });
+    </script>
+
+</body>
+</html>
