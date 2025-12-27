@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workbook & Meditace | JEZ, you can!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* --- PALETA JEZ, YOU CAN! --- */
+            --primary-green: #3A6B62;    
+            --bg-sage-light: #EBF2F0;    
+            --accent-red: #D65A49;       
+            --accent-red-hover: #b54636;
+            --bg-cream: #FDFBF6;         
+            --bg-white: #ffffff;
+            --text-dark: #2C3635;        
+            --text-light: #586665;
+            
+            --border-radius: 25px;
+            --btn-radius: 50px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-green);
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
+        h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 600; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 50px 0; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- Tlačítka --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 30px;
+            border-radius: var(--btn-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            width: 100%; 
+            max-width: 350px;
+            margin: 5px 0;
+        }
+
+        .btn-primary { background-color: var(--accent-red); color: white; }
+        .btn-primary:hover { background-color: var(--accent-red-hover); transform: translateY(-2px); }
+
+        .btn-outline { background-color: transparent; border: 2px solid var(--primary-green); color: var(--primary-green); }
+        .btn-outline:hover { background-color: var(--primary-green); color: white; }
+
+        .btn-soundcloud { background: linear-gradient(90deg, #ff8800, #ff3300); color: white; }
+        .btn-soundcloud:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 51, 0, 0.2); }
+
+        .btn-print { background-color: #f0f0f0; color: #555; width: auto; font-size: 0.9rem; padding: 12px 25px; margin-top: 20px; }
+        .btn-print:hover { background-color: #e0e0e0; }
+
+        /* --- Hero Sekce --- */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-sage-light) 0%, var(--bg-cream) 100%);
+            padding: 60px 0 80px 0;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+        .hero-img {
+            width: 250px; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(58, 107, 98, 0.15);
+            margin: 0 auto 30px auto; display: block;
+        }
+
+        /* --- Podcast Grid --- */
+        .episodes-box {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            margin-top: -50px; /* Překryv přes hero */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid rgba(58, 107, 98, 0.1);
+        }
+        .episodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .episode-col { display: flex; flex-direction: column; align-items: center; }
+
+        /* --- Meditace --- */
+        .meditation-section { text-align: center; background-color: var(--bg-cream); padding: 50px 0 20px 0; }
+        .meditation-card {
+            background: #fff;
+            border: 2px dashed var(--primary-green);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        audio {
+            width: 100%;
+            margin-top: 20px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #f1f3f4;
+        }
+
+        /* --- SOS Karta (Nové umístění) --- */
+        .sos-section {
+            padding: 0 0 50px 0;
+            text-align: center;
+        }
+        .sos-box {
+            background-color: #fff0ed; /* Jemně červený nádech */
+            border: 1px solid #f2dcd9;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: left;
+        }
+        .sos-text h3 { margin: 0 0 5px 0; font-size: 1.2rem; color: var(--accent-red); }
+        .sos-text p { margin: 0; font-size: 0.9rem; }
+
+        /* --- WORKBOOK STYLY --- */
+        .workbook-section {
+            background-color: var(--bg-sage-light);
+            padding: 70px 0;
+            border-radius: 40px;
+        }
+
+        .workbook-paper {
+            background-color: var(--bg-white);
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .workbook-intro-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .privacy-notice {
+            background-color: #fffbf0;
+            border: 1px solid #e8dcb8;
+            color: #8a7c56;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .workbook-block { margin-bottom: 50px; padding-bottom: 40px; border-bottom: 1px solid #eee; }
+        .workbook-block:last-child { border-bottom: none; }
+        
+        .question-wrapper { margin-bottom: 30px; }
+        
+        label { 
+            display: block; 
+            font-weight: 700; 
+            color: var(--primary-green); 
+            margin-bottom: 10px; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.2rem; 
+        }
+        
+        .sub-label { 
+            display: block; 
+            font-size: 0.95rem; 
+            color: #777; 
+            margin-bottom: 12px; 
+            font-style: italic; 
+            line-height: 1.5;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%; padding: 15px;
+            border: 1px solid #ddd; border-radius: 15px;
+            background-color: #fafafa;
+            font-family: 'Montserrat', sans-serif; font-size: 1rem;
+            color: var(--text-dark); transition: 0.3s;
+        }
+        textarea:focus, input[type="text"]:focus {
+            outline: none; border-color: var(--accent-red); background-color: #fff;
+            box-shadow: 0 5px 15px rgba(214, 90, 73, 0.1);
+        }
+        textarea { min-height: 120px; resize: vertical; }
+
+        .experiment-box {
+            background-color: #f1f7f6;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        .workbook-outro {
+            background-color: var(--bg-cream);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px dashed var(--primary-green);
+        }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 50px 20px; background-color: var(--primary-green); color: white; margin-top: 50px;}
+        footer a { color: rgba(255,255,255,0.85); text-decoration: none; margin: 0 10px; }
+
+        /* Mobil */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .episodes-grid { grid-template-columns: 1fr; gap: 40px; }
+            .workbook-paper { padding: 25px; } 
+            .sos-box { flex-direction: column; text-align: center; }
+        }
+        
+        @media print {
+            body { background: white; }
+            .hero, .episodes-box, .meditation-section, .sos-section, footer, .btn-print { display: none; }
+            .workbook-section { padding: 0; background: none; }
+            .workbook-paper { box-shadow: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/jezyoucan.png" alt="JEZ, you can! Podcast" class="hero-img">
+            <h4 style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px; opacity: 0.8;">Epizoda #1</h4>
+            <h1>Proč ti chutná něco,<br>co ti "nesmí" chutnat?</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="episodes-box">
+            <h2 style="font-size: 1.4rem;">Poslechla jsi už všechno?</h2>
+            
+            <div class="episodes-grid">
+                <div class="episode-col">
+                    <h3 style="font-size: 1.1rem;">🎧 Původní epizoda</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Kde to všechno začalo.</p>
+                    <a href="https://open.spotify.com/episode/3cTeljPt3J0UaF18UwdRZR?si=XsE92RDCSDy94ouLHukDVQ" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-spotify"></i> Přehrát epizodu
+                    </a>
+                </div>
+
+                <div class="episode-col">
+                    <h3 style="font-size: 1.1rem; color: var(--accent-red);">🎁 Bonusová epizoda</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Hlubší vhledy jen pro tebe.</p>
+                    <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-ti-chutna-neco-co-ti-nesmi-chutnat/s-lmZolG2Wnq7?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e6ca95978e1646848a759a6176ee9ca9" target="_blank" class="btn btn-soundcloud">
+                        <i class="fab fa-soundcloud"></i> Přehrát Bonus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="meditation-section">
+        <div class="container">
+            <div class="meditation-card">
+                <i class="fas fa-spa" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 20px;"></i>
+                <h2>Uklidnění nervového systému před jídlem</h2>
+                <p>
+                    Najdi si klidné místo, zavři oči a poslouchej. Tato krátká meditace ti pomůže přepnout z módu "bojuj nebo uteč" do stavu klidu.
+                </p>
+                <audio controls>
+                    <source src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/Uklidneni-nervoveho-systemu-pred-jidlem.mp3" type="audio/mpeg">
+                    Tvůj prohlížeč nepodporuje přehrávání audia.
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="sos-section">
+        <div class="container">
+            <div class="sos-box">
+                <div class="sos-text">
+                    <h3><i class="fas fa-heart"></i> SOS Karta pro krizové chvíle</h3>
+                    <p>Cítíš, že to na tebe jde? Stáhni si první pomoc do mobilu a měj ji vždy po ruce.</p>
+                </div>
+                <a href="https://pdf.katerinaheallo.com/765fgtrh" target="_blank" class="btn btn-primary" style="width: auto; padding: 12px 30px; margin: 0;">
+                    <i class="fas fa-download"></i> Stáhnout kartu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="workbook-section">
+        <div class="container">
+            <div class="workbook-paper" id="workbook">
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2 style="margin-bottom: 20px;">Proč ti chutná něco, co ti "nesmí" chutnat?</h2>
+                    <h4 style="font-weight: 400; font-style: italic; color: var(--primary-green);">Workbook k zamyšlení</h4>
+                </div>
+
+                <div class="workbook-intro-text">
+                    <p>Tento workbook je určený k tomu, abys prozkoumala vlastní vzorce kolem "zakázaného" jídla. Neexistují správné nebo špatné odpovědi. Jde o to, abys začala rozumět tomu, co se u tebe děje.</p>
+                    <p style="margin-top: 10px;"><strong>Vezmi si papír a tužku (nebo piš přímo sem) a buď k sobě laskavá. Tohle je proces.</strong></p>
+                </div>
+
+                <div class="privacy-notice">
+                    <i class="fas fa-lock"></i>
+                    <span>Tvé odpovědi jsou soukromé. Ukládají se pouze ve tvém prohlížeči.</span>
+                </div>
+
+                <form id="workbookForm">
+                    <div class="workbook-block">
+                        <h3 style="color: var(--accent-red); margin-bottom: 20px;">ČÁST 1: MŮJ OSOBNÍ VZOREC</h3>
+                        
+                        <div class="question-wrapper">
+                            <label>1. Jaké jídlo je pro tebe "zakázané"?</label>
+                            <span class="sub-label">(Např. čokoláda, sušenky, chipsy, zmrzlina, pizza...)</span>
+                            <input type="text" id="q1" class="wb-input">
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>2. Kdy máš na toto jídlo chuť?</label>
+                            <span class="sub-label">
+                                Čas (ráno, odpoledne, večer, v noci?)<br>
+                                Situace (po práci, po hádce, když jsem unavená, když se nudím?)<br>
+                                Místo (doma, v práci, v autě, u lednice?)
+                            </span>
+                            <textarea id="q2" class="wb-input"></textarea>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>3. Co se děje PŘED tím, než dostaneš chuť?</label>
+                            <span class="sub-label">
+                                Jsem unavená? Jsem ve stresu? Jsem smutná?<br>
+                                Jsem znuděná? Jsem naštvaná? Cítím se osamělá? Něco jiného?
+                            </span>
+                            <textarea id="q3" class="wb-input"></textarea>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>4. Co se děje V HLAVĚ, když máš chuť?</label>
+                            <span class="sub-label">
+                                Napiš přesně, co si říkáš:<br>
+                                "Nesmím si to dát, protože..."<br>
+                                "Jen kousek, pak přestanu..."<br>
+                                "Zase jsem selhala..."
+                            </span>
+                            <textarea id="q4" class="wb-input"></textarea>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>5. Co se děje, když to sníš?</label>
+                            <span class="sub-label">
+                                Cítím úlevu? Cítím vinu? Cítím stud?<br>
+                                Cítím vztek na sebe? Cítím se nafouklá? Cítím se unavená?
+                            </span>
+                            <textarea id="q5" class="wb-input"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="workbook-block">
+                        <h3 style="color: var(--accent-red); margin-bottom: 20px;">ČÁST 2: INTERNALIZOVANÉ HLASY</h3>
+                        
+                        <div class="question-wrapper">
+                            <label>6. Čí hlas slyšíš, když si říkáš "tohle nesmím"?</label>
+                            <span class="sub-label">Máma? Táta? Babička? Kamarádka? Lékař/dietolog? Společnost?</span>
+                            <input type="text" id="q6" class="wb-input">
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>7. Co přesně ti tento člověk říkal?</label>
+                            <span class="sub-label">
+                                Zkus si vzpomenout na konkrétní větu:<br>
+                                "Tohle není zdravé"<br>
+                                "To ztloustneš"<br>
+                                "Tak si poručíš, ne?"<br>
+                                "To bys neměla"
+                            </span>
+                            <textarea id="q7" class="wb-input"></textarea>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>8. Jak jsi se tehdy cítila, když ti to řekl?</label>
+                            <span class="sub-label">Stud? Vina? Vztek? Smutek? Strach?</span>
+                            <textarea id="q8" class="wb-input"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="workbook-block">
+                        <h3 style="color: var(--accent-red); margin-bottom: 20px;">ČÁST 3: REBEL VS. KRITIK</h3>
+                        
+                        <div class="question-wrapper">
+                            <label>9. Máš v sobě "rebel" – část, která říká "Budu dělat, co chci"?</label>
+                            <span class="sub-label">
+                                Pokud ano, co přesně říká?<br>
+                                "Nikdo mi nebude říkat, co můžu"<br>
+                                "Mám právo si to dát"<br>
+                                "Zasloužím si potěšení"
+                            </span>
+                            <textarea id="q9" class="wb-input"></textarea>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>10. Co se stane PO TOM, co tento "rebel" vyhraje?</label>
+                            <span class="sub-label">
+                                Cítím úlevu?<br>
+                                Pak přijde vina?<br>
+                                Říkám si "zítra začnu znovu"?
+                            </span>
+                            <textarea id="q10" class="wb-input"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="workbook-block">
+                        <h3 style="color: var(--accent-red); margin-bottom: 20px;">ČÁST 4: CO OPRAVDU POTŘEBUJEŠ?</h3>
+                        
+                        <div class="question-wrapper">
+                            <label>11. Když máš chuť na "zakázané" jídlo, co OPRAVDU hledáš?</label>
+                            <span class="sub-label">
+                                Odpočinek? Útěchu? Potěšení? Úlevu od stresu?<br>
+                                Hranici (říct NE někomu)? Péči o sebe?
+                            </span>
+                            <textarea id="q11" class="wb-input"></textarea>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <label>12. Jak bys mohla dostat to, co opravdu potřebuješ – BEZ jídla?</label>
+                            <span class="sub-label">
+                                (Např. Pokud hledám odpočinek, mohla bych si lehnout na 10 minut. Pokud hledám útěchu, mohla bych si zavolat kamarádce.)
+                            </span>
+                            <textarea id="q12" class="wb-input"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="workbook-block" style="border:none;">
+                        <h3 style="color: var(--accent-red); margin-bottom: 20px;">ČÁST 5: EXPERIMENT – JÍM BEZ VINY</h3>
+                        
+                        <div class="experiment-box">
+                            <p style="font-weight: 600; margin-bottom: 10px; font-size: 1.1rem;">Zkus tento experiment:</p>
+                            <p>Příští týden, až budeš mít chuť na "zakázané" jídlo:</p>
+                            <ul style="margin-top: 10px; margin-bottom: 20px; padding-left: 20px;">
+                                <li>Zastav se. Zeptej se: "Co se děje v mém těle?"</li>
+                                <li>Pokud to opravdu chceš, dej si to – ale <strong>BEZ viny</strong>.</li>
+                                <li>Sedni si. Dej si to na talíř. Vychutnej si to.</li>
+                                <li>Pozoruj, co se děje.</li>
+                            </ul>
+                        </div>
+                        
+                        <label>13. Po experimentu si zapiš:</label>
+                        <span class="sub-label">
+                            Jak se to lišilo od "tajného" jedení u lednice?<br>
+                            Cítila jsem se jinak?<br>
+                            Snědla jsem míň, nebo stejně?<br>
+                            Co jsem zjistila?
+                        </span>
+                        <textarea id="q13" class="wb-input"></textarea>
+                    </div>
+
+                    <div class="workbook-outro">
+                        <h4 style="margin-bottom: 15px;">Hlavní zjištění:</h4>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">
+                            To, že ti chutná něco "zakázaného," není tvoje chyba. Není to slabost. <br>
+                            Je to signál – signál, že máš internalizovaný hlas někoho jiného, část tebe se vzpírá kontrole, nebo tvůj nervový systém hledá úlevu.
+                        </p>
+                        <p style="margin-top: 20px; font-weight: 600; color: var(--primary-green);">
+                            A první krok ke změně je rozumět vlastním vzorcům.<br>
+                            Buď k sobě laskavá. Tohle je proces.
+                        </p>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button type="button" onclick="window.print()" class="btn btn-print">
+                            <i class="fas fa-print"></i> Uložit odpovědi (PDF)
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 20px;">
+            S láskou, Kateřina ♡
+        </p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/myheallo/" target="_blank">Instagram</a>
+            <a href="https://www.katerinaheallo.com" target="_blank">Web</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.wb-input');
+            inputs.forEach(input => {
+                const savedValue = localStorage.getItem(input.id);
+                if (savedValue) input.value = savedValue;
+                input.addEventListener('input', function() {
+                    localStorage.setItem(this.id, this.value);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
