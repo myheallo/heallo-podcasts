@@ -26,7 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Změna z height na min-height pro mobily */
             text-align: center;
             padding: 20px;
         }
@@ -66,7 +66,7 @@
             text-align: center;
             border: 2px solid #eee;
             border-radius: 15px;
-            letter-spacing: 5px; /* Aby čísla byla dál od sebe */
+            letter-spacing: 5px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             outline: none;
@@ -79,7 +79,6 @@
             box-shadow: 0 0 0 4px rgba(58, 107, 98, 0.1);
         }
 
-        /* Skryje placeholder při psaní, aby nerušil */
         input:not(:placeholder-shown) {
             letter-spacing: 8px; 
         }
@@ -105,23 +104,45 @@
             box-shadow: 0 10px 20px rgba(58, 107, 98, 0.2);
         }
 
-        .logo-img {
-            width: 80px;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
         .error-msg {
             color: #d9534f;
             margin-top: 15px;
             font-size: 0.9rem;
-            display: none; /* Skryté defaultně */
+            display: none;
+        }
+
+        /* --- STYL PRO DISCLAIMER (NOVÉ) --- */
+        .disclaimer-box {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: left;
+            font-size: 0.75rem;
+            color: #888;
+            line-height: 1.5;
+        }
+        
+        .disclaimer-box strong {
+            color: var(--text);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .disclaimer-box ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .disclaimer-box li {
+            margin-bottom: 5px;
         }
         
         .footer-note {
-            margin-top: 30px;
+            margin-top: 20px;
             font-size: 0.75rem;
-            color: #aaa;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -143,6 +164,15 @@
             </div>
         </form>
 
+        <div class="disclaimer-box">
+            <strong>⚠️ Důležité upozornění:</strong>
+            <p>Vložením kódu a vstupem do sekce potvrzujete, že souhlasíte s následujícím:</p>
+            <ul>
+                <li><strong>Autorská práva:</strong> Veškerý obsah (audio, texty, PDF) je chráněn autorským právem a je určen výhradně pro vaši osobní potřebu. Jeho další šíření, kopírování či sdílení je zakázáno.</li>
+                <li><strong>Vzdělávací účel:</strong> Autorka není lékařka. Poskytované materiály mají pouze vzdělávací a seberozvojový charakter a nenahrazují odbornou lékařskou péči, diagnostiku ani psychoterapii.</li>
+            </ul>
+        </div>
+
         <div class="footer-note">
             HEALLO® | JEZ, you can! | Psycho-logicky
         </div>
@@ -154,17 +184,12 @@
         const errorMsg = document.getElementById('errorMsg');
 
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Zabrání klasickému odeslání
+            e.preventDefault(); 
             
-            // Získáme kód, odstraníme mezery a převedeme na malá písmena
             let code = input.value.trim().toLowerCase();
 
             if (code) {
                 // Přesměruje na stránku [kod].html
-                // Například kód "12345678" zkusí otevřít "12345678.html"
-                
-                // Kontrola existence stránky na GitHub Pages je trik:
-                // Prostě tam uživatele pošleme. Pokud kód neexistuje, GitHub zobrazí 404.
                 window.location.href = code + ".html";
             }
         });
