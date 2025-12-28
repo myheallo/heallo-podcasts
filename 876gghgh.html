@@ -14,15 +14,15 @@
 
     <style>
         :root {
-            /* --- PALETA PSYCHO-LOGICKY --- */
-            --primary-purple: #8E44AD;  
-            --text-dark: #4A235A;
-            --accent-pink: #D98880;     
-            --bg-light: #FDFBFD;        
-            --bg-white: #ffffff;
-            --accent-gold: #F1C40F;
+            /* --- PALETA "HAPPY & SOFT" --- */
+            --primary-purple: #8E44AD;   /* Hlavní fialová */
+            --text-dark: #4A235A;        /* Čitelný text */
+            --soft-pink: #E6B0AA;        /* Pudrová růžová */
+            --bg-page: #FDFBFD;          /* Pozadí */
+            --white: #ffffff;
+            --gold: #F1C40F;             /* Bonus */
             
-            --border-radius: 20px;
+            --radius: 25px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,13 +30,13 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
+            background-color: var(--bg-page);
+            background-image: linear-gradient(to bottom, #fff0f5 0%, #fff 100%);
+            line-height: 1.7;
             font-size: 16px;
-            background-image: linear-gradient(180deg, #FDFBFD 0%, #F5EEF5 100%);
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             color: var(--primary-purple);
             line-height: 1.3;
@@ -44,11 +44,13 @@
 
         h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; }
         h2 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
-        h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; }
-        h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--accent-pink); text-transform: uppercase; letter-spacing: 1px; }
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;}
+        h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--soft-pink); text-transform: uppercase; letter-spacing: 1px; }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 60px 0; }
+        .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 50px 0; }
+        
+        .text-narrow { max-width: 650px; margin: 0 auto; text-align: center; }
         img { max-width: 100%; height: auto; }
 
         /* --- Tlačítka --- */
@@ -66,142 +68,145 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, var(--accent-pink), #C0392B);
-            color: white;
-            box-shadow: 0 5px 20px rgba(217, 136, 128, 0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(217, 136, 128, 0.6); }
-        
+
+        .btn-primary {
+            background: linear-gradient(45deg, #D98880, #C0392B);
+            color: white;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(192, 57, 43, 0.3); }
+
+        .btn-gold {
+            background: linear-gradient(45deg, #F1C40F, #F39C12);
+            color: white;
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(241, 196, 15, 0.3); }
+
         .btn-outline {
             background: white;
             border: 2px solid var(--primary-purple);
             color: var(--primary-purple);
-            box-shadow: none;
         }
-        .btn-outline:hover { background-color: var(--primary-purple); color: white; }
+        .btn-outline:hover { background: var(--primary-purple); color: white; }
 
-        .btn-print {
-            background: #eee; color: #555; font-size: 0.9rem; padding: 12px 20px; box-shadow: none;
-        }
-        .btn-print:hover { background: #ddd; transform: none; box-shadow: none; }
+        .btn-print { background: #f0f0f0; color: #666; font-size: 0.9rem; }
+        .btn-print:hover { background: #e0e0e0; }
 
         /* --- Hero --- */
-        .hero { padding: 60px 0 60px 0; text-align: center; }
+        .hero { padding: 60px 0 40px 0; text-align: center; }
         .hero-img {
             width: 220px; border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(142, 68, 173, 0.15);
+            box-shadow: 0 15px 30px rgba(142, 68, 173, 0.15);
             margin: 0 auto 30px auto; display: block;
         }
 
-        /* --- Audio Players --- */
-        .audio-box {
-            background: var(--bg-white);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 40px rgba(142, 68, 173, 0.05);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border: 1px solid rgba(142, 68, 173, 0.1);
+        /* --- Karty --- */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.3s;
         }
-        .audio-info { flex: 1; }
-        .audio-tag { font-size: 0.8rem; font-weight: bold; color: var(--accent-pink); text-transform: uppercase; }
+        .card:hover { transform: translateY(-3px); }
+
+        /* Podcasty Grid */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .podcast-item { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .podcast-icon { 
+            width: 60px; height: 60px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin: 0 auto 15px auto; color: white;
+        }
 
         /* --- Kolo hranic --- */
-        .wheel-section {
-            background: var(--bg-white);
-            border-radius: 30px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 15px 50px rgba(142, 68, 173, 0.08);
-        }
-        .wheel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .range-group { margin-bottom: 15px; }
-        .range-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); }
+        .wheel-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        .range-group { margin-bottom: 10px; }
+        .range-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
         input[type=range] { width: 100%; accent-color: var(--primary-purple); cursor: pointer; }
 
-        /* --- WORKBOOK STYLY --- */
-        .workbook-section { background-color: #F8F4F8; padding: 60px 0; }
-        .workbook-paper {
-            background: #fff; padding: 50px;
-            border-radius: 20px; border: 1px solid #f0e6f0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-            max-width: 850px; margin: 0 auto;
+        /* --- WORKBOOK (Formátování) --- */
+        .workbook-section { background-color: #FDFBFD; padding: 40px 0; }
+        .wb-paper {
+            background: #fff; padding: 60px;
+            border-radius: 20px;
+            border: 2px solid #F5EEF5;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         }
         
-        .wb-intro { text-align: center; margin-bottom: 40px; font-style: italic; opacity: 0.8; }
+        .wb-intro { text-align: center; margin-bottom: 50px; font-style: italic; opacity: 0.7; }
         
-        .wb-block { 
-            margin-bottom: 50px; padding-bottom: 40px; 
-            border-bottom: 1px solid #f0e6f0; 
-        }
+        .wb-block { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 2px dashed #f0f0f0; }
         .wb-block:last-child { border: none; }
 
-        .situation-grid {
-            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 20px;
+        /* Situation Box - seskupení Situace + Tělo + Mysl */
+        .situation-box {
+            background: #fafafa;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            margin-bottom: 40px;
         }
-        .situation-col {
-            background: #fdfbfd; padding: 15px; border-radius: 10px; border: 1px solid #eee;
-        }
+        .situation-header { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-purple); margin-bottom: 20px; font-weight: 700; }
 
-        label { display: block; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; font-size: 1rem; margin-top: 15px; }
+        label { display: block; font-weight: 700; color: var(--primary-purple); margin-bottom: 8px; font-size: 1rem; margin-top: 20px; }
         .sub-label { display: block; font-size: 0.85rem; color: #888; margin-bottom: 8px; font-style: italic; }
 
         textarea, input[type="text"] {
             width: 100%; padding: 12px;
-            border: 1px solid #ddd; border-radius: 10px;
+            border: 2px solid #f0f0f0; border-radius: 12px;
             font-family: 'Montserrat', sans-serif; font-size: 0.95rem;
-            resize: vertical; min-height: 60px;
-            margin-top: 5px; background: #fafafa; color: var(--text-dark);
+            resize: vertical; min-height: 50px; margin-top: 5px;
+            background: #fff; transition: 0.3s; color: var(--text-dark);
         }
-        textarea:focus, input[type="text"]:focus { outline: none; border-color: var(--accent-pink); background: #fff; }
+        textarea:focus, input[type="text"]:focus { 
+            outline: none; border-color: var(--soft-pink); background: #fff; 
+        }
 
         /* Checkboxy */
-        .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-        .checkbox-label { font-weight: 400; font-size: 0.95rem; display: flex; align-items: center; gap: 10px; margin: 0; }
-        input[type="checkbox"] { accent-color: var(--primary-purple); width: 18px; height: 18px; }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .checkbox-label { font-weight: 400; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px; margin: 0; color: #555; }
+        input[type="checkbox"] { accent-color: var(--primary-purple); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; }
 
-        /* Plan 66 dni */
+        /* 66 Dní Plán */
         .plan-box {
-            background: #F4ECF7; padding: 20px; border-radius: 15px; margin-bottom: 20px;
-            border-left: 4px solid var(--primary-purple);
+            background: #F4ECF7; padding: 25px; border-radius: 15px; margin-bottom: 25px;
+            border-left: 5px solid var(--primary-purple);
         }
-        .plan-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--primary-purple); font-size: 1.1rem; }
-        .plan-phrase { font-style: italic; color: var(--accent-pink); font-weight: 600; margin-bottom: 10px; display: block; }
 
         /* Tracker Table */
-        .tracker-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .tracker-table th { text-align: left; padding: 10px; border-bottom: 2px solid #ddd; color: var(--primary-purple); }
+        .tracker-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+        .tracker-table th { text-align: left; padding: 12px; border-bottom: 2px solid #ddd; color: var(--primary-purple); }
         .tracker-table td { padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; }
-        .tracker-input { min-height: 40px; margin: 0; }
+        .tracker-input { min-height: 40px; margin: 0; border: 1px solid #eee; }
 
         /* SOS Box */
-        .sos-box-container {
-            background: white; border: 2px solid var(--accent-pink);
-            padding: 30px; border-radius: 20px; text-align: center;
-            box-shadow: 0 10px 40px rgba(217, 136, 128, 0.15);
+        .sos-box {
+            background: #FCE4EC; padding: 40px; border-radius: 20px; text-align: center;
+            border: 4px solid white; box-shadow: 0 10px 30px rgba(233, 30, 99, 0.1);
             max-width: 600px; margin: 0 auto;
         }
 
         /* Footer */
-        footer { text-align: center; padding: 50px 0; color: #aaa; font-size: 0.9rem; }
+        footer { text-align: center; padding: 50px 0; background: var(--text-dark); color: white; margin-top: 60px; }
+        footer a { color: var(--soft-pink); text-decoration: none; margin: 0 15px; }
+        footer a:hover { color: white; }
 
         @media (max-width: 768px) {
-            .wheel-grid, .situation-grid { grid-template-columns: 1fr; }
-            .audio-box { flex-direction: column; text-align: center; }
-            .workbook-paper { padding: 20px; }
-            .tracker-table, .tracker-table thead, .tracker-table tbody, .tracker-table th, .tracker-table td, .tracker-table tr { 
-                display: block; 
-            }
-            .tracker-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-            .tracker-table td { border: none; position: relative; padding-left: 0; margin-bottom: 10px; }
+            .grid-2, .wheel-container, .checkbox-group { grid-template-columns: 1fr; }
+            .wb-paper { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .table-responsive { overflow-x: auto; }
         }
+        
         @media print {
             body { background: white; }
-            .hero, .audio-box, .wheel-section, .sos-section, footer, .btn, .science-box { display: none; }
+            .hero, .grid-2, .wheel-section, .sos-section, footer, .btn { display: none; }
             .workbook-section { padding: 0; background: none; }
-            .workbook-paper { box-shadow: none; border: none; padding: 0; width: 100%; max-width: 100%; }
+            .wb-paper { box-shadow: none; border: none; padding: 0; width: 100%; max-width: 100%; }
         }
     </style>
 </head>
@@ -210,48 +215,43 @@
     <section class="hero">
         <div class="container">
             <img src="https://www.katerinaheallo.com/wp-content/uploads/2025/12/psychologicky.png" alt="Psycho-logicky Podcast" class="hero-img">
-            <h1>Proč se bojím říct NE?<br><span style="font-weight: 400; font-size: 1.5rem; font-style: italic;">(A co se stane, když to zkusím)</span></h1>
+            <h1>Proč se bojím říct NE?<br><span style="font-weight: 400; font-size: 1.4rem; font-style: italic; color: #888;">(A co se stane, když to zkusím)</span></h1>
+            <p class="text-narrow">
+                O syndromu hodné holky, usmířovací reakci a o tom, proč vaše ANO není laskavost, ale strategie přežití.
+            </p>
         </div>
     </section>
 
-    <div class="container" style="margin-top: -30px;">
-        <div class="audio-box">
-            <div style="background:#1DB954; color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">
-                <i class="fab fa-spotify"></i>
+    <div class="container" style="margin-top: -20px;">
+        <div class="grid-2">
+            <div class="card podcast-item">
+                <div class="podcast-icon" style="background: #1DB954;"><i class="fab fa-spotify"></i></div>
+                <h4 style="color: var(--primary-purple);">Veřejná epizoda</h4>
+                <p style="font-size:0.9rem; margin-bottom: 20px; opacity: 0.8;">Bridget Jones a teorie traumatu.</p>
+                <a href="https://open.spotify.com/episode/2FqGcPaqu7dK9OJYmK0TTr?si=KCgc_zZaTI-6A443u3kv-w" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-play"></i> Přehrát
+                </a>
             </div>
-            <div class="audio-info">
-                <span class="audio-tag">Veřejná část (20 min)</span>
-                <h4>Bridget Jones a teorie traumatu</h4>
-                <p style="font-size:0.9rem; margin:0; opacity: 0.8;">Proč říkáme ANO, když chceme říct NE.</p>
-            </div>
-            <a href="https://open.spotify.com/episode/2FqGcPaqu7dK9OJYmK0TTr?si=KCgc_zZaTI-6A443u3kv-w" target="_blank" class="btn btn-outline" style="padding: 10px 25px; font-size:0.9rem;">
-                <i class="fas fa-play"></i> Přehrát
-            </a>
-        </div>
 
-        <div class="audio-box" style="border: 2px solid var(--accent-pink);">
-            <div style="background: linear-gradient(135deg, var(--accent-pink), #C0392B); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">
-                <i class="fas fa-star"></i>
+            <div class="card podcast-item" style="border: 2px solid var(--gold);">
+                <div class="podcast-icon" style="background: var(--gold);"><i class="fas fa-star"></i></div>
+                <h4 style="color: #F39C12;">Bonus pro tebe</h4>
+                <p style="font-size:0.9rem; margin-bottom: 20px; opacity: 0.8;">Nervový systém a 66 dní změny.</p>
+                <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-se-bojim-rict-ne-a-co-se-stane-kdyz-to-zkusim/s-Zzp9heWtCsw?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c432dc52aab4472bb5b8d65dd6cbc0d1" target="_blank" class="btn btn-gold">
+                    <i class="fab fa-soundcloud"></i> Přehrát Bonus
+                </a>
             </div>
-            <div class="audio-info">
-                <span class="audio-tag" style="color: var(--accent-pink);">Bonus pro tebe (15 min)</span>
-                <h4>Nervový systém a 66 dní změny</h4>
-                <p style="font-size:0.9rem; margin:0; opacity: 0.8;">Jak přepsat usmířovací reakci v mozku.</p>
-            </div>
-            <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-se-bojim-rict-ne-a-co-se-stane-kdyz-to-zkusim/s-Zzp9heWtCsw?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c432dc52aab4472bb5b8d65dd6cbc0d1" target="_blank" class="btn">
-                <i class="fab fa-soundcloud"></i> Přehrát Bonus
-            </a>
         </div>
     </div>
 
     <section>
         <div class="container">
-            <div class="wheel-section">
+            <div class="card wheel-section">
                 <div style="text-align: center; margin-bottom: 30px;">
                     <h2>⭕ Tvé Kolo hranic</h2>
-                    <p style="opacity: 0.8;">0 = Žádné hranice (strach), 10 = Zdravé a pevné hranice</p>
+                    <p>Ohodnoť, jak pevné hranice cítíš (0 = Žádné/Strach, 10 = Zdravé/Respekt)</p>
                 </div>
-                <div class="wheel-grid">
+                <div class="wheel-container">
                     <div class="wheel-inputs">
                         <div class="range-group"><div class="range-label"><span>Práce & Kariéra</span> <span id="val0">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(0, this.value)"></div>
                         <div class="range-group"><div class="range-label"><span>Rodina</span> <span id="val1">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(1, this.value)"></div>
@@ -260,184 +260,251 @@
                         <div class="range-group"><div class="range-label"><span>Čas pro sebe</span> <span id="val4">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(4, this.value)"></div>
                         <div class="range-group"><div class="range-label"><span>Energie</span> <span id="val5">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(5, this.value)"></div>
                     </div>
-                    <div class="wheel-chart-container"><canvas id="boundaryWheel"></canvas></div>
+                    <div><canvas id="boundaryWheel"></canvas></div>
                 </div>
                 <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed #ddd;">
-                    <label style="color: var(--primary-purple);">Co ti pohled na tvé kolo říká? Kde ti utíká nejvíc energie?</label>
+                    <label>Co ti pohled na tvé kolo říká? Kde ti utíká nejvíc energie?</label>
                     <textarea id="wheelReflection" placeholder="Vidím, že..."></textarea>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="container" style="text-align: center; margin-bottom: 40px;">
-        <div class="sos-box-container">
-            <h3 style="color: var(--primary-purple); margin-bottom: 10px;">🆘 SOS Karta: Jak říct NE laskavě</h3>
-            <p style="margin-bottom: 25px; color: var(--text-dark); opacity: 0.9;">
-                Konkrétní fráze pro chvíle, kdy tvůj nervový systém panikaří.
-            </p>
-            <a href="https://pdf.katerinaheallo.com/876gghgh" target="_blank" class="btn">
-                <i class="fas fa-download"></i> Stáhnout PDF kartu
-            </a>
+    <section class="sos-section">
+        <div class="container">
+            <div class="sos-box">
+                <h3 style="color: #C2185B; margin-bottom: 10px;">🆘 SOS Karta: Jak říct NE laskavě</h3>
+                <p style="margin-bottom: 25px;">
+                    Konkrétní fráze pro chvíle, kdy tvůj nervový systém panikaří.
+                </p>
+                <a href="https://pdf.katerinaheallo.com/876gghgh" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Stáhnout PDF kartu
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
 
     <section class="workbook-section">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 10px;">📋 WORKBOOK: "Mapa mého ANO"</h2>
-            <div class="workbook-paper">
-                <p class="wb-intro">Interaktivní nástroj pro sebepoznání. Vše se automaticky ukládá v tomto prohlížeči. <i class="fas fa-lock"></i></p>
+            <div class="wb-paper">
+                <p class="wb-intro">
+                    Tento workbook vám pomůže rozpoznat, kdy říkáte ANO, ale myslíte NE, pochopit původ tohoto vzorce a vytvořit plán změny.<br>
+                    <small>✨ Vše se automaticky ukládá v tomto prohlížeči. Nikdo jiný to neuvidí.</small>
+                </p>
 
                 <div class="wb-block">
-                    <h3>📍 Část 1: Kdy říkám ANO, ale myslím NE?</h3>
-                    <p style="font-size: 0.9rem;">Vzpomeň si na poslední 3 situace.</p>
-                    
-                    <div class="situation-grid">
-                        <div class="situation-col">
-                            <h4>Situace 1</h4>
-                            <label>Co se stalo?</label>
-                            <textarea id="s1_what"></textarea>
-                            <label>Co jsi řekla?</label>
-                            <textarea id="s1_said"></textarea>
-                            <label>Co jsi CHTĚLA říct?</label>
-                            <textarea id="s1_wanted"></textarea>
+                    <h3>ČÁST 1-3: ANALÝZA KONKRÉTNÍCH SITUACÍ</h3>
+                    <p style="margin-bottom: 20px;">Vyplň si detailně 3 situace, kdy jsi řekla ANO místo NE.</p>
+
+                    <div class="situation-box">
+                        <div class="situation-header">Situace 1</div>
+                        
+                        <label>Co se stalo? (Kdo tě o co požádal?)</label>
+                        <textarea id="s1_what"></textarea>
+                        
+                        <label>Co jsi řekla?</label>
+                        <textarea id="s1_said"></textarea>
+                        
+                        <label>Co jsi ve skutečnosti chtěla říct?</label>
+                        <textarea id="s1_wanted"></textarea>
+
+                        <label>Co jsi cítila v těle PŘED tím, než jsi řekla ANO?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body1"> Sevření v žaludku</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body2"> Napětí v ramenou</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body3"> Rychlejší dech</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body4"> Zrychlený tep</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body5"> Horko v obličeji</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body6"> Pocit prázdnoty</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body7"> Nevolnost</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_body8"> Tlak v hrudi</label>
                         </div>
-                        <div class="situation-col">
-                            <h4>Situace 2</h4>
-                            <label>Co se stalo?</label>
-                            <textarea id="s2_what"></textarea>
-                            <label>Co jsi řekla?</label>
-                            <textarea id="s2_said"></textarea>
-                            <label>Co jsi CHTĚLA říct?</label>
-                            <textarea id="s2_wanted"></textarea>
+                        <input type="text" id="s1_body_other" placeholder="Jiné...">
+
+                        <label>Jaké bylo tvé automatické přesvědčení? "Pokud řeknu NE..."</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" id="s1_bel1"> ...bude naštvaný/á</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_bel2"> ...přestane mě mít rád/a</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_bel3"> ...jsem sobecká</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_bel4"> ...nejsem dobrý člověk</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_bel5"> ...opustí mě</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s1_bel6"> ...zklamu je</label>
                         </div>
-                        <div class="situation-col">
-                            <h4>Situace 3</h4>
-                            <label>Co se stalo?</label>
-                            <textarea id="s3_what"></textarea>
-                            <label>Co jsi řekla?</label>
-                            <textarea id="s3_said"></textarea>
-                            <label>Co jsi CHTĚLA říct?</label>
-                            <textarea id="s3_wanted"></textarea>
+                    </div>
+
+                    <div class="situation-box">
+                        <div class="situation-header">Situace 2</div>
+                        
+                        <label>Co se stalo?</label>
+                        <textarea id="s2_what"></textarea>
+                        
+                        <label>Co jsi řekla?</label>
+                        <textarea id="s2_said"></textarea>
+                        
+                        <label>Co jsi ve skutečnosti chtěla říct?</label>
+                        <textarea id="s2_wanted"></textarea>
+
+                        <label>Co jsi cítila v těle?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body1"> Sevření v žaludku</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body2"> Napětí v ramenou</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body3"> Rychlejší dech</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body4"> Zrychlený tep</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body5"> Horko v obličeji</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body6"> Pocit prázdnoty</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body7"> Nevolnost</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_body8"> Tlak v hrudi</label>
+                        </div>
+
+                        <label>Automatické přesvědčení? "Pokud řeknu NE..."</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" id="s2_bel1"> ...bude naštvaný/á</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_bel2"> ...přestane mě mít rád/a</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_bel3"> ...jsem sobecká</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_bel4"> ...nejsem dobrý člověk</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_bel5"> ...opustí mě</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s2_bel6"> ...zklamu je</label>
+                        </div>
+                    </div>
+
+                    <div class="situation-box">
+                        <div class="situation-header">Situace 3</div>
+                        
+                        <label>Co se stalo?</label>
+                        <textarea id="s3_what"></textarea>
+                        
+                        <label>Co jsi řekla?</label>
+                        <textarea id="s3_said"></textarea>
+                        
+                        <label>Co jsi ve skutečnosti chtěla říct?</label>
+                        <textarea id="s3_wanted"></textarea>
+
+                        <label>Co jsi cítila v těle?</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body1"> Sevření v žaludku</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body2"> Napětí v ramenou</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body3"> Rychlejší dech</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body4"> Zrychlený tep</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body5"> Horko v obličeji</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body6"> Pocit prázdnoty</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body7"> Nevolnost</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_body8"> Tlak v hrudi</label>
+                        </div>
+
+                        <label>Automatické přesvědčení? "Pokud řeknu NE..."</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" id="s3_bel1"> ...bude naštvaný/á</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_bel2"> ...přestane mě mít rád/a</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_bel3"> ...jsem sobecká</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_bel4"> ...nejsem dobrý člověk</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_bel5"> ...opustí mě</label>
+                            <label class="checkbox-label"><input type="checkbox" id="s3_bel6"> ...zklamu je</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="wb-block">
-                    <h3>💭 Část 2 & 3: Tělo a Mysl</h3>
-                    <div style="background: #fdfbfd; padding: 20px; border-radius: 15px; border: 1px solid #eee;">
-                        <label>Co jsi cítila v těle? (Zaškrtni vše, co platí pro tvé situace)</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="body_stomach"> Sevření v žaludku</label>
-                            <label class="checkbox-label"><input type="checkbox" id="body_shoulders"> Napětí v ramenou</label>
-                            <label class="checkbox-label"><input type="checkbox" id="body_breath"> Rychlejší dech / tep</label>
-                            <label class="checkbox-label"><input type="checkbox" id="body_heat"> Horko v obličeji</label>
-                            <label class="checkbox-label"><input type="checkbox" id="body_empty"> Pocit prázdnoty / nevolnost</label>
-                            <label class="checkbox-label"><input type="checkbox" id="body_chest"> Tlak v hrudi</label>
-                        </div>
-
-                        <label style="margin-top: 30px;">Jaké bylo tvé automatické přesvědčení? "Pokud řeknu NE..."</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="belief_angry"> ...bude naštvaný/á</label>
-                            <label class="checkbox-label"><input type="checkbox" id="belief_love"> ...přestane mě mít rád/a</label>
-                            <label class="checkbox-label"><input type="checkbox" id="belief_selfish"> ...jsem sobecká</label>
-                            <label class="checkbox-label"><input type="checkbox" id="belief_abandon"> ...opustí mě</label>
-                            <label class="checkbox-label"><input type="checkbox" id="belief_disappoint"> ...zklamu je</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wb-block">
-                    <h3>🌱 Část 4: Odkud to pochází?</h3>
-                    <label>Jak reagovali rodiče, když jsi jako dítě řekla NE?</label>
-                    <textarea id="childhood_reaction" placeholder="Byli naštvaní? Smutní? Ignorovali to?"></textarea>
+                    <h3>ČÁST 4: ODKUD TO POCHÁZÍ?</h3>
+                    <label>Jak reagovali rodiče, když jsi jako dítě řekla NE? (Naštvaně? Smutně?)</label>
+                    <textarea id="childhood_reaction"></textarea>
                     
+                    <label>Jaká byla zpráva, kterou sis odnesla?</label>
+                    <textarea id="childhood_message"></textarea>
+
                     <label>Kdy jsi poprvé cítila, že musíš být "milá", abys byla v bezpečí?</label>
                     <textarea id="childhood_memory"></textarea>
                 </div>
 
                 <div class="wb-block">
-                    <h3>🔍 Část 5: Kdo mě spouští?</h3>
-                    <label>Top 3 osoby, u kterých je nejtěžší říct NE:</label>
-                    <input type="text" id="trigger_person1" placeholder="1. Osoba + Proč?">
-                    <input type="text" id="trigger_person2" placeholder="2. Osoba + Proč?">
-                    <input type="text" id="trigger_person3" placeholder="3. Osoba + Proč?">
+                    <h3>ČÁST 5: KDO MĚ SPOUŠTÍ?</h3>
+                    <p style="margin-bottom: 10px;">Seřaď si: Partner, Rodiče, Sourozenci, Přátelé, Šéf, Děti, Cizí lidé...</p>
+                    <label>Top 1 osoba (nejtěžší):</label>
+                    <input type="text" id="trigger_p1_name" placeholder="Kdo?">
+                    <input type="text" id="trigger_p1_why" placeholder="Proč je to u něj/ní tak těžké?">
+
+                    <label>Top 2 osoba:</label>
+                    <input type="text" id="trigger_p2_name" placeholder="Kdo?">
+                    <input type="text" id="trigger_p2_why" placeholder="Proč?">
+
+                    <label>Top 3 osoba:</label>
+                    <input type="text" id="trigger_p3_name" placeholder="Kdo?">
+                    <input type="text" id="trigger_p3_why" placeholder="Proč?">
                 </div>
 
                 <div class="wb-block">
-                    <h3>💪 Část 6: Můj plán změny (66 dní)</h3>
+                    <h3>ČÁST 6: MŮJ PLÁN ZMĚNY (66 DNÍ)</h3>
                     
                     <div class="plan-box">
-                        <span class="plan-title">Týden 1-2: Malé NE</span>
-                        <span class="plan-phrase">Fráze: "Teď nemůžu odpovědět. Ozvu se ti za 2 hodiny."</span>
-                        <label>Kde to zkusím? (3 bezpečné situace)</label>
+                        <span style="font-weight: 700; color: #8E44AD;">Týden 1-2: Malé NE</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem;">"Teď nemůžu odpovědět. Ozvu se ti za 2 hodiny."</span>
+                        <label>Vyber 3 bezpečné situace, kde to zkusíš:</label>
                         <textarea id="plan_week1"></textarea>
                     </div>
 
                     <div class="plan-box">
-                        <span class="plan-title">Týden 3-4: Střední NE</span>
-                        <span class="plan-phrase">Fráze: "Tohle pro mě není příjemné. Můžeme mluvit o něčem jiném?"</span>
-                        <label>Kde to zkusím?</label>
+                        <span style="font-weight: 700; color: #8E44AD;">Týden 3-4: Střední NE</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem;">"Tohle pro mě není příjemné. Můžeme mluvit o něčem jiném?"</span>
+                        <label>Vyber 3 náročnější situace:</label>
                         <textarea id="plan_week3"></textarea>
                     </div>
 
                     <div class="plan-box">
-                        <span class="plan-title">Týden 5-9: Pevné NE</span>
-                        <span class="plan-phrase">Fráze: "Ne, tenhle plán mi nevyhovuje." / "Ne, děkuji."</span>
-                        <label>Kde to zkusím?</label>
+                        <span style="font-weight: 700; color: #8E44AD;">Týden 5-7: Pevné NE</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem;">"Ne, tenhle plán mi nevyhovuje."</span>
+                        <label>3 těžké situace:</label>
                         <textarea id="plan_week5"></textarea>
+                    </div>
+
+                    <div class="plan-box">
+                        <span style="font-weight: 700; color: #8E44AD;">Týden 8-9: NE bez omluv</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem;">"Ne, děkuji."</span>
+                        <label>3 situace bez vysvětlování:</label>
+                        <textarea id="plan_week8"></textarea>
+                    </div>
+                </div>
+
+                <div class="wb-block">
+                    <h3>ČÁST 7: DENNÍ TRACKER (Prvních 7 dní)</h3>
+                    <div class="table-responsive">
+                        <table class="tracker-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">Den</th>
+                                    <th style="width: 15%;">Řekla jsem NE?</th>
+                                    <th style="width: 15%;">Pocit (1-10)</th>
+                                    <th>Poznámka / Co se stalo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Den 1</strong></td><td><input type="checkbox" id="t_d1"></td><td><input type="text" id="t_d1_f" class="tracker-input"></td><td><input type="text" id="t_d1_n" class="tracker-input"></td></tr>
+                                <tr><td><strong>Den 2</strong></td><td><input type="checkbox" id="t_d2"></td><td><input type="text" id="t_d2_f" class="tracker-input"></td><td><input type="text" id="t_d2_n" class="tracker-input"></td></tr>
+                                <tr><td><strong>Den 3</strong></td><td><input type="checkbox" id="t_d3"></td><td><input type="text" id="t_d3_f" class="tracker-input"></td><td><input type="text" id="t_d3_n" class="tracker-input"></td></tr>
+                                <tr><td><strong>Den 4</strong></td><td><input type="checkbox" id="t_d4"></td><td><input type="text" id="t_d4_f" class="tracker-input"></td><td><input type="text" id="t_d4_n" class="tracker-input"></td></tr>
+                                <tr><td><strong>Den 5</strong></td><td><input type="checkbox" id="t_d5"></td><td><input type="text" id="t_d5_f" class="tracker-input"></td><td><input type="text" id="t_d5_n" class="tracker-input"></td></tr>
+                                <tr><td><strong>Den 6</strong></td><td><input type="checkbox" id="t_d6"></td><td><input type="text" id="t_d6_f" class="tracker-input"></td><td><input type="text" id="t_d6_n" class="tracker-input"></td></tr>
+                                <tr><td><strong>Den 7</strong></td><td><input type="checkbox" id="t_d7"></td><td><input type="text" id="t_d7_f" class="tracker-input"></td><td><input type="text" id="t_d7_n" class="tracker-input"></td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
                 <div class="wb-block" style="border:none;">
-                    <h3>🎯 Část 7: Denní Tracker (Prvních 5 dní)</h3>
-                    <p>Začni sledovat svou cestu. Celý proces trvá 66 dní.</p>
+                    <h3>ČÁST 8: REFLEXE PO 66 DNECH</h3>
+                    <label>Co se změnilo?</label>
+                    <textarea id="ref_changed"></textarea>
                     
-                    <table class="tracker-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 10%;">Den</th>
-                                <th style="width: 15%;">Řekla jsem NE?</th>
-                                <th style="width: 15%;">Pocit (1-10)</th>
-                                <th>Poznámka / Co se stalo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Den 1</strong></td>
-                                <td><input type="checkbox" id="track_d1_done"></td>
-                                <td><input type="text" id="track_d1_feel" class="tracker-input"></td>
-                                <td><input type="text" id="track_d1_note" class="tracker-input"></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Den 2</strong></td>
-                                <td><input type="checkbox" id="track_d2_done"></td>
-                                <td><input type="text" id="track_d2_feel" class="tracker-input"></td>
-                                <td><input type="text" id="track_d2_note" class="tracker-input"></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Den 3</strong></td>
-                                <td><input type="checkbox" id="track_d3_done"></td>
-                                <td><input type="text" id="track_d3_feel" class="tracker-input"></td>
-                                <td><input type="text" id="track_d3_note" class="tracker-input"></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Den 4</strong></td>
-                                <td><input type="checkbox" id="track_d4_done"></td>
-                                <td><input type="text" id="track_d4_feel" class="tracker-input"></td>
-                                <td><input type="text" id="track_d4_note" class="tracker-input"></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Den 5</strong></td>
-                                <td><input type="checkbox" id="track_d5_done"></td>
-                                <td><input type="text" id="track_d5_feel" class="tracker-input"></td>
-                                <td><input type="text" id="track_d5_note" class="tracker-input"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p style="margin-top: 20px; font-size: 0.9rem; color: #888;">
-                        * Pokračuj v deníku offline nebo si tuto stránku vytiskni.
-                    </p>
+                    <label>Jaké tělesné signály teď vnímám jinak?</label>
+                    <textarea id="ref_body"></textarea>
+                    
+                    <label>Co bylo nejtěžší?</label>
+                    <textarea id="ref_hard"></textarea>
+                    
+                    <label>Kdo respektuje moje hranice? Kdo ne?</label>
+                    <textarea id="ref_who"></textarea>
+                    
+                    <label>Co si odnáším?</label>
+                    <textarea id="ref_takeaway"></textarea>
                 </div>
 
                 <div style="text-align: center; margin-top: 40px;">
@@ -448,14 +515,16 @@
                         "Říct NE někomu jinému znamená říct ANO sobě."
                     </p>
                 </div>
-
             </div>
         </div>
     </section>
 
     <footer>
-        <p>S láskou, Kateřina ♡ | PSYCHO-LOGICKY by HEALLO®</p>
-        <a href="https://www.instagram.com/myheallo/" target="_blank" style="color: var(--primary-purple); text-decoration: none;">Instagram</a>
+        <p style="margin-bottom: 15px; font-family: 'Playfair Display', serif; font-size: 1.1rem;">S láskou, Kateřina ♡ | PSYCHO-LOGICKY</p>
+        <div>
+            <a href="https://www.instagram.com/myheallo/" target="_blank">Instagram</a>
+            <a href="https://www.katerinaheallo.com" target="_blank">Web</a>
+        </div>
     </footer>
 
     <script>
@@ -467,7 +536,7 @@
                 label: 'Moje hranice',
                 data: [5, 5, 5, 5, 5, 5],
                 fill: true,
-                backgroundColor: 'rgba(217, 136, 128, 0.4)',
+                backgroundColor: 'rgba(142, 68, 173, 0.2)',
                 borderColor: '#8E44AD',
                 pointBackgroundColor: '#8E44AD',
                 pointBorderColor: '#fff'
@@ -490,20 +559,17 @@
 
         // 2. UKLÁDÁNÍ
         document.addEventListener('DOMContentLoaded', function() {
-            // Textarea a text inputy
-            const inputs = document.querySelectorAll('textarea, input[type="text"]');
+            const inputs = document.querySelectorAll('textarea, input[type="text"], input[type="checkbox"]');
             inputs.forEach(input => {
-                const saved = localStorage.getItem('psych_' + input.id);
-                if (saved) input.value = saved;
-                input.addEventListener('input', function() { if(this.id) localStorage.setItem('psych_' + this.id, this.value); });
-            });
-
-            // Checkboxy
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => {
-                const saved = localStorage.getItem('psych_' + cb.id);
-                if (saved === 'true') cb.checked = true;
-                cb.addEventListener('change', function() { if(this.id) localStorage.setItem('psych_' + this.id, this.checked); });
+                if(input.type === 'checkbox') {
+                    const saved = localStorage.getItem('psych_full_' + input.id);
+                    if(saved === 'true') input.checked = true;
+                    input.addEventListener('change', function() { localStorage.setItem('psych_full_' + this.id, this.checked); });
+                } else {
+                    const saved = localStorage.getItem('psych_full_' + input.id);
+                    if(saved) input.value = saved;
+                    input.addEventListener('input', function() { localStorage.setItem('psych_full_' + this.id, this.value); });
+                }
             });
         });
     </script>
