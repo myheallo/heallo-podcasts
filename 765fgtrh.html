@@ -12,20 +12,20 @@
 
     <style>
         :root {
-            /* --- NOVÁ PALETA (GOLD & BLACK) --- */
-            --primary-gold: #C5A059;      /* Původní zelená -> Zlatá */
+            /* --- PALETA "LIGHT LUX" (GOLD & CREAM) --- */
+            --primary-gold: #C5A059;      /* Hlavní zlatá */
             --primary-gold-dark: #a68545; /* Tmavší zlatá pro hover */
             
-            --bg-gold-light: #F9F5F0;     /* Původní sage -> Jemná krémová/béžová */
+            --bg-gold-light: #F9F5F0;     /* Jemná béžová */
             
-            --accent-black: #1a1a1a;      /* Původní červená -> Černá (ladí s logem) */
+            --accent-black: #1a1a1a;      /* Černá (pro text a kontrast) */
             --accent-black-hover: #333333;
 
             --bg-cream: #FDFBF6;         
             --bg-white: #ffffff;
             
-            --text-dark: #1a1a1a;         /* Černý text */
-            --text-light: #666666;        /* Šedý text */
+            --text-dark: #1a1a1a;         
+            --text-light: #666666;        
             
             --border-radius: 25px;
             --btn-radius: 50px;
@@ -43,11 +43,11 @@
 
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--primary-gold); /* Nadpisy jsou zlaté */
+            color: var(--primary-gold); 
             line-height: 1.3;
         }
 
-        h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; color: var(--accent-black); /* Hlavní nadpis černý pro čitelnost */ }
+        h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; color: var(--accent-black); }
         h2 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; color: var(--primary-gold); }
         h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--accent-black); }
 
@@ -77,23 +77,34 @@
             margin: 5px 0;
         }
 
-        /* Primární tlačítko je nyní ČERNÉ (bývalo červené) */
+        /* Černé tlačítko (pro méně emoční akce) */
         .btn-primary { background-color: var(--accent-black); color: white; }
         .btn-primary:hover { background-color: var(--accent-black-hover); transform: translateY(-2px); }
 
-        /* Outline tlačítko je nyní ZLATÉ (bývalo zelené) */
+        /* Obrysové zlaté */
         .btn-outline { background-color: transparent; border: 2px solid var(--primary-gold); color: var(--primary-gold); }
         .btn-outline:hover { background-color: var(--primary-gold); color: white; }
 
-        .btn-soundcloud { background: linear-gradient(90deg, #ff8800, #ff3300); color: white; }
-        .btn-soundcloud:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 51, 0, 0.2); }
+        /* Soundcloud (sjednoceno do zlaté) */
+        .btn-soundcloud { background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-dark)); color: white; }
+        .btn-soundcloud:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3); }
 
-        .btn-print { background-color: #f0f0f0; color: #555; width: auto; font-size: 0.9rem; padding: 12px 25px; margin-top: 20px; }
+        /* NOVÉ: Zlaté plné tlačítko (pro SOS) */
+        .btn-gold-solid { 
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark)); 
+            color: white; 
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+        .btn-gold-solid:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5); 
+        }
+
+        .btn-print { background-color: #f0f0f0; color: #555; width: auto; font-size: 0.9rem; padding: 12px 25px; margin-top: 20px; box-shadow: none; }
         .btn-print:hover { background-color: #e0e0e0; }
 
         /* --- Hero Sekce --- */
         .hero {
-            /* Gradient do zlatova/krémova */
             background: linear-gradient(180deg, var(--bg-gold-light) 0%, var(--bg-cream) 100%);
             padding: 60px 0 80px 0;
             text-align: center;
@@ -102,7 +113,7 @@
         }
         .hero-img {
             width: 250px; border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15); /* Zlatý stín */
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15);
             margin: 0 auto 30px auto; display: block;
         }
 
@@ -114,7 +125,7 @@
             margin-top: -50px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.05);
             text-align: center;
-            border: 1px solid rgba(197, 160, 89, 0.2); /* Jemný zlatý rámeček */
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
         .episodes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
         .episode-col { display: flex; flex-direction: column; align-items: center; }
@@ -123,7 +134,7 @@
         .meditation-section { text-align: center; background-color: var(--bg-cream); padding: 50px 0 20px 0; }
         .meditation-card {
             background: #fff;
-            border: 2px dashed var(--primary-gold); /* Zlaté čárkování */
+            border: 2px dashed var(--primary-gold);
             border-radius: var(--border-radius);
             padding: 40px 30px;
             max-width: 600px;
@@ -137,13 +148,13 @@
             background-color: #f1f3f4;
         }
 
-        /* --- SOS Karta (Upraveno z červené na béžovo-černou) --- */
+        /* --- SOS Karta (Upraveno) --- */
         .sos-section {
             padding: 0 0 50px 0;
             text-align: center;
         }
         .sos-box {
-            background-color: #FFF8F0; /* Velmi světlá zlatavá */
+            background-color: #FFF8F0; 
             border: 1px solid #EBE0D0;
             padding: 30px;
             border-radius: 20px;
@@ -160,7 +171,7 @@
 
         /* --- WORKBOOK STYLY --- */
         .workbook-section {
-            background-color: var(--bg-gold-light); /* Jemná béžová */
+            background-color: var(--bg-gold-light);
             padding: 70px 0;
             border-radius: 40px;
         }
@@ -204,7 +215,7 @@
         label { 
             display: block; 
             font-weight: 700; 
-            color: var(--primary-gold); /* Zlaté popisky */
+            color: var(--primary-gold); 
             margin-bottom: 10px; 
             font-family: 'Playfair Display', serif; 
             font-size: 1.2rem; 
@@ -236,7 +247,7 @@
             background-color: #fdfdfd;
             padding: 30px;
             border-radius: 20px;
-            border-left: 5px solid var(--primary-gold); /* Zlatý pruh */
+            border-left: 5px solid var(--primary-gold);
             margin-bottom: 30px;
             border: 1px solid #eee;
             border-left-width: 5px;
@@ -255,7 +266,7 @@
         footer { 
             text-align: center; 
             padding: 50px 20px; 
-            background-color: var(--primary-gold); /* Zlatá patička */
+            background-color: var(--primary-gold); 
             color: white; 
             margin-top: 50px;
         }
@@ -271,7 +282,7 @@
         
         @media print {
             body { background: white; }
-            .hero, .episodes-box, .meditation-section, .sos-section, footer, .btn-print { display: none; }
+            .hero, .episodes-box, .meditation-section, .sos-section, footer, .btn-print, .btn-gold-solid { display: none; }
             .workbook-section { padding: 0; background: none; }
             .workbook-paper { box-shadow: none; padding: 0; }
         }
@@ -331,10 +342,10 @@
         <div class="container">
             <div class="sos-box">
                 <div class="sos-text">
-                    <h3><i class="fas fa-heart"></i> SOS Karta pro krizové chvíle</h3>
+                    <h3><i class="fas fa-heart" style="color: var(--primary-gold);"></i> SOS Karta pro krizové chvíle</h3>
                     <p>Cítíš, že to na tebe jde? Stáhni si první pomoc do mobilu a měj ji vždy po ruce.</p>
                 </div>
-                <a href="https://pdf.katerinaheallo.com/765fgtrh" target="_blank" class="btn btn-primary" style="width: auto; padding: 12px 30px; margin: 0;">
+                <a href="https://pdf.katerinaheallo.com/765fgtrh" target="_blank" class="btn btn-gold-solid" style="width: auto; padding: 12px 30px; margin: 0;">
                     <i class="fas fa-download"></i> Stáhnout kartu
                 </a>
             </div>
