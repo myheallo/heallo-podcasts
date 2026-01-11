@@ -14,24 +14,24 @@
 
     <style>
         :root {
-            /* --- NOVÁ PALETA "SOPHISTICATED BERRY" (Podle coveru) --- */
+            /* --- NOVÁ PALETA "LIGHT LUX" (Krémová & Zlatá) --- */
             
-            /* Hlavní barva (nápis Psycho-logicky): Hluboká malinová/švestková */
-            --primary-berry: #922B6C;
+            /* Hlavní barva (Zlatá): Elegantní, matná */
+            --gold-primary: #C5A059;
+            --gold-dark: #9E7D3D;
             
-            /* Text: Velmi tmavá fialovo-šedá (měkčí než černá) */
-            --text-dark: #3D2936;
+            /* Text: Tmavá šedo-hnědá (černá káva) - měkčí než čistá černá */
+            --text-dark: #2C2C2C;
+            --text-muted: #666666;
             
-            /* Akcent: Starorůžová (kameny) */
-            --dusty-pink: #D98895;
+            /* Pozadí: Krémová / Slonová kost */
+            --bg-cream: #FDFBF7;
+            --bg-white: #FFFFFF;
             
-            /* Pozadí: Mlhavá bílá s nádechem růžové */
-            --bg-mist: #FDF9FB;
+            /* Akcenty */
+            --border-color: #E6E0D5;
             
-            /* Zlatá: Tlumená, elegantní */
-            --gold-elegant: #CCA352;
-            
-            --radius: 25px;
+            --radius: 20px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,31 +39,29 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
-            background-color: var(--bg-mist);
-            /* Velmi jemný přechod jako mlha na fotce */
-            background-image: linear-gradient(180deg, #FFF 0%, #FAF4F8 100%);
+            background-color: var(--bg-cream);
             line-height: 1.7;
             font-size: 16px;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--primary-berry);
+            color: var(--text-dark);
             line-height: 1.3;
         }
 
-        h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; }
-        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
-        h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; border-bottom: 2px solid #F2E6ED; padding-bottom: 10px; display: inline-block;}
-        h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--dusty-pink); text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; color: var(--gold-dark); }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; color: var(--gold-dark); }
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; border-bottom: 2px solid var(--gold-primary); padding-bottom: 10px; display: inline-block;}
+        h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 1px; }
 
         .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
         section { padding: 50px 0; }
         
-        .text-narrow { max-width: 650px; margin: 0 auto; text-align: center; }
+        .text-narrow { max-width: 650px; margin: 0 auto; text-align: center; color: var(--text-muted); }
         img { max-width: 100%; height: auto; }
 
-        /* --- Tlačítka (Elegantní a šťavnatá) --- */
+        /* --- Tlačítka (Elegantní) --- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -78,51 +76,46 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(146, 43, 108, 0.15);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.15);
         }
 
         .btn-primary {
-            /* Gradient z Berry do Starorůžové */
-            background: linear-gradient(135deg, var(--dusty-pink), var(--primary-berry));
+            /* Zlatá */
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
             color: white;
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(146, 43, 108, 0.3); }
-
-        .btn-gold {
-            background: linear-gradient(135deg, #EAD6A1, var(--gold-elegant));
-            color: white;
-        }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(204, 163, 82, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(197, 160, 89, 0.3); }
 
         .btn-outline {
             background: white;
-            border: 2px solid var(--primary-berry);
-            color: var(--primary-berry);
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
         }
-        .btn-outline:hover { background: var(--primary-berry); color: white; }
+        .btn-outline:hover { background: var(--gold-primary); color: white; }
 
-        .btn-print { background: #f0f0f0; color: #666; font-size: 0.9rem; box-shadow: none; }
-        .btn-print:hover { background: #e0e0e0; transform: none; }
+        .btn-print { background: #EBEBEB; color: #666; font-size: 0.9rem; box-shadow: none; }
+        .btn-print:hover { background: #DADADA; transform: none; }
 
         /* --- Hero --- */
         .hero { padding: 60px 0 40px 0; text-align: center; }
         .hero-img {
-            width: 220px; border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(146, 43, 108, 0.1); /* Jemný berry stín */
+            width: 220px; border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
             margin: 0 auto 30px auto; display: block;
+            border: 1px solid var(--gold-primary);
         }
 
         /* --- Karty --- */
         .card {
-            background: white;
+            background: var(--bg-white);
             border-radius: var(--radius);
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(146, 43, 108, 0.03); /* Velmi jemný barevný nádech stínu */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); 
             margin-bottom: 30px;
-            border: 1px solid rgba(146, 43, 108, 0.05);
+            border: 1px solid var(--border-color);
             transition: transform 0.3s;
         }
-        .card:hover { transform: translateY(-3px); }
+        .card:hover { transform: translateY(-3px); border-color: var(--gold-primary); }
 
         /* Podcasty Grid */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -136,83 +129,90 @@
         /* --- Kolo hranic --- */
         .wheel-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
         .range-group { margin-bottom: 10px; }
-        .range-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
-        /* Posuvník v barvě Berry */
-        input[type=range] { width: 100%; accent-color: var(--primary-berry); cursor: pointer; }
+        .range-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; color: var(--text-muted); }
+        /* Posuvník v barvě Zlaté */
+        input[type=range] { width: 100%; accent-color: var(--gold-primary); cursor: pointer; }
 
         /* --- WORKBOOK --- */
-        .workbook-section { background-color: #FAF4F8; padding: 40px 0; } /* Jemné růžové pozadí */
+        .workbook-section { background-color: #F2F0EB; padding: 40px 0; } /* Tmavší béžová pro oddělení sekce */
         .wb-paper {
             background: #fff; padding: 60px;
-            border-radius: 20px;
-            border: 1px solid #F2E6ED;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.02);
+            border-radius: 5px; /* Více jako papír */
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        /* Zlatý proužek nahoře */
+        .wb-paper::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; 
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 5px 5px 0 0;
         }
         
-        .wb-intro { text-align: center; margin-bottom: 50px; font-style: italic; opacity: 0.7; }
+        .wb-intro { text-align: center; margin-bottom: 50px; font-style: italic; opacity: 0.8; color: var(--text-muted); }
         
-        .wb-block { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 2px dashed #F2E6ED; }
+        .wb-block { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px dashed #CCC; }
         .wb-block:last-child { border: none; }
 
         /* Situation Box */
         .situation-box {
-            background: #FFFEFD; /* Téměř bílá */
+            background: #FAFAFA; /* Velmi světlá šedá */
             padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #F0E0E8;
+            border-radius: 15px;
+            border: 1px solid #EAEAEA;
             margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.01);
         }
-        .situation-header { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary-berry); margin-bottom: 20px; font-weight: 700; }
+        .situation-header { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold-dark); margin-bottom: 20px; font-weight: 700; border-left: 3px solid var(--gold-primary); padding-left: 15px; }
 
-        label { display: block; font-weight: 700; color: var(--primary-berry); margin-bottom: 8px; font-size: 1rem; margin-top: 20px; }
-        .sub-label { display: block; font-size: 0.85rem; color: #888; margin-bottom: 8px; font-style: italic; }
+        label { display: block; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; font-size: 1rem; margin-top: 20px; }
 
         textarea, input[type="text"] {
             width: 100%; padding: 12px;
-            border: 1px solid #E0D0D8; border-radius: 12px;
+            border: 1px solid #CCC; border-radius: 8px;
             font-family: 'Montserrat', sans-serif; font-size: 0.95rem;
             resize: vertical; min-height: 50px; margin-top: 5px;
-            background: #FFFCFE; transition: 0.3s; color: var(--text-dark);
+            background: #FFFFFF; transition: 0.3s; color: var(--text-dark);
         }
         textarea:focus, input[type="text"]:focus { 
-            outline: none; border-color: var(--primary-berry); background: #fff; 
+            outline: none; border-color: var(--gold-primary); box-shadow: 0 0 5px rgba(197, 160, 89, 0.2); 
         }
 
         /* Checkboxy */
         .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
         .checkbox-label { font-weight: 400; font-size: 0.9rem; display: flex; align-items: flex-start; gap: 10px; margin: 0; color: #555; }
-        input[type="checkbox"] { accent-color: var(--primary-berry); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; }
+        input[type="checkbox"] { accent-color: var(--gold-primary); width: 18px; height: 18px; margin-top: 3px; flex-shrink: 0; }
 
         /* 66 Dní Plán */
         .plan-box {
-            background: #FCF5F9; padding: 25px; border-radius: 15px; margin-bottom: 25px;
-            border-left: 5px solid var(--primary-berry);
+            background: #FDFBF7; padding: 25px; border-radius: 15px; margin-bottom: 25px;
+            border: 1px solid #EEE;
+            border-left: 4px solid var(--gold-primary);
         }
 
         /* Tracker Table */
         .tracker-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
-        .tracker-table th { text-align: left; padding: 12px; border-bottom: 2px solid #ddd; color: var(--primary-berry); }
-        .tracker-table td { padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; }
-        .tracker-input { min-height: 40px; margin: 0; border: 1px solid #eee; }
+        .tracker-table th { text-align: left; padding: 12px; border-bottom: 2px solid var(--gold-primary); color: var(--text-dark); }
+        .tracker-table td { padding: 10px; border-bottom: 1px solid #EEE; vertical-align: top; }
+        .tracker-input { min-height: 40px; margin: 0; background: #FFF; }
 
-        /* SOS Box - Svěží */
+        /* SOS Box - Béžová */
         .sos-box {
-            background: #FFF0F5; /* Velmi světlá růžová */
+            background: #FFFBF0; /* Velmi světlá zlatavá */
             padding: 40px; border-radius: 20px; text-align: center;
-            border: 2px solid #F8DAE5; 
-            box-shadow: 0 10px 30px rgba(217, 136, 149, 0.15);
+            border: 1px solid #E6DCC8; 
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.05);
             max-width: 600px; margin: 0 auto;
         }
 
         /* Footer */
-        footer { text-align: center; padding: 50px 0; background: var(--text-dark); color: white; margin-top: 60px; }
-        footer a { color: var(--dusty-pink); text-decoration: none; margin: 0 15px; }
+        footer { text-align: center; padding: 50px 0; background: #1A1A1A; color: white; margin-top: 60px; }
+        footer p { color: #BBB; }
+        footer a { color: var(--gold-primary); text-decoration: none; margin: 0 15px; }
         footer a:hover { color: white; }
 
         @media (max-width: 768px) {
             .grid-2, .wheel-container, .checkbox-group { grid-template-columns: 1fr; }
-            .wb-paper { padding: 20px; }
+            .wb-paper { padding: 25px; }
             h1 { font-size: 1.8rem; }
             .table-responsive { overflow-x: auto; }
         }
@@ -222,6 +222,7 @@
             .hero, .grid-2, .wheel-section, .sos-section, footer, .btn { display: none; }
             .workbook-section { padding: 0; background: none; }
             .wb-paper { box-shadow: none; border: none; padding: 0; width: 100%; max-width: 100%; }
+            .wb-paper::before { display: none; }
         }
     </style>
 </head>
@@ -230,7 +231,7 @@
     <section class="hero">
         <div class="container">
             <img src="https://www.katerinaheallo.com/wp-content/uploads/2026/01/psychologicky.png" alt="Psycho-logicky Podcast" class="hero-img">
-            <h1>Proč se bojím říct NE?<br><span style="font-weight: 400; font-size: 1.4rem; font-style: italic; color: #888;">(A co se stane, když to zkusím)</span></h1>
+            <h1>Proč se bojím říct NE?<br><span style="font-weight: 400; font-size: 1.4rem; font-style: italic; color: #999;">(A co se stane, když to zkusím)</span></h1>
             <p class="text-narrow">
                 O syndromu hodné holky, usmířovací reakci a o tom, proč vaše ANO není laskavost, ale strategie přežití.
             </p>
@@ -241,19 +242,19 @@
         <div class="grid-2">
             <div class="card podcast-item">
                 <div class="podcast-icon" style="background: #1DB954;"><i class="fab fa-spotify"></i></div>
-                <h4 style="color: var(--primary-berry);">Veřejná epizoda</h4>
-                <p style="font-size:0.9rem; margin-bottom: 20px; opacity: 0.8;">Bridget Jones a teorie traumatu.</p>
-                <a href="https://open.spotify.com/episode/2FqGcPaqu7dK9OJYmK0TTr?si=KCgc_zZaTI-6A443u3kv-w" target="_blank" class="btn btn-outline">
-                    <i class="fas fa-play"></i> Přehrát
+                <h4 style="color: var(--text-dark);">Veřejná epizoda</h4>
+                <p style="font-size:0.9rem; margin-bottom: 20px; color: #666;">Bridget Jones a teorie traumatu.</p>
+                <a href="https://open.spotify.com/episode/2FqGcPaqu7dK9OJYmK0TTr?si=KCgc_zZaTI-6A443u3kv-w" target="_blank" class="btn btn-outline" style="border-color: #1DB954; color: #1DB954;">
+                    <i class="fas fa-play" style="margin-right: 8px;"></i> Přehrát
                 </a>
             </div>
 
-            <div class="card podcast-item" style="border: 2px solid var(--gold-elegant);">
-                <div class="podcast-icon" style="background: var(--gold-elegant);"><i class="fas fa-star"></i></div>
-                <h4 style="color: #C29336;">Bonus pro tebe</h4>
-                <p style="font-size:0.9rem; margin-bottom: 20px; opacity: 0.8;">Nervový systém a 66 dní změny.</p>
-                <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-se-bojim-rict-ne-a-co-se-stane-kdyz-to-zkusim/s-Zzp9heWtCsw?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c432dc52aab4472bb5b8d65dd6cbc0d1" target="_blank" class="btn btn-gold">
-                    <i class="fab fa-soundcloud"></i> Přehrát Bonus
+            <div class="card podcast-item" style="border: 2px solid var(--gold-primary);">
+                <div class="podcast-icon" style="background: var(--gold-primary);"><i class="fas fa-star"></i></div>
+                <h4 style="color: var(--gold-dark);">Bonus pro tebe</h4>
+                <p style="font-size:0.9rem; margin-bottom: 20px; color: #666;">Nervový systém a 66 dní změny.</p>
+                <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-se-bojim-rict-ne-a-co-se-stane-kdyz-to-zkusim/s-Zzp9heWtCsw?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c432dc52aab4472bb5b8d65dd6cbc0d1" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-soundcloud" style="margin-right: 8px;"></i> Přehrát Bonus
                 </a>
             </div>
         </div>
@@ -264,21 +265,21 @@
             <div class="card wheel-section">
                 <div style="text-align: center; margin-bottom: 30px;">
                     <h2>⭕ Tvé Kolo hranic</h2>
-                    <p>Ohodnoť, jak pevné hranice cítíš (0 = Žádné/Strach, 10 = Zdravé/Respekt)</p>
+                    <p style="color: #666;">Ohodnoť, jak pevné hranice cítíš (0 = Žádné/Strach, 10 = Zdravé/Respekt)</p>
                 </div>
                 <div class="wheel-container">
                     <div class="wheel-inputs">
-                        <div class="range-group"><div class="range-label"><span>Práce & Kariéra</span> <span id="val0">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(0, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Rodina</span> <span id="val1">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(1, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Partnerství</span> <span id="val2">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(2, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Přátelé</span> <span id="val3">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(3, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Čas pro sebe</span> <span id="val4">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(4, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Energie</span> <span id="val5">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(5, this.value)"></div>
+                        <div class="range-group"><div class="range-label"><span>Práce & Kariéra</span> <span id="val0" style="color: var(--gold-dark);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(0, this.value)"></div>
+                        <div class="range-group"><div class="range-label"><span>Rodina</span> <span id="val1" style="color: var(--gold-dark);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(1, this.value)"></div>
+                        <div class="range-group"><div class="range-label"><span>Partnerství</span> <span id="val2" style="color: var(--gold-dark);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(2, this.value)"></div>
+                        <div class="range-group"><div class="range-label"><span>Přátelé</span> <span id="val3" style="color: var(--gold-dark);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(3, this.value)"></div>
+                        <div class="range-group"><div class="range-label"><span>Čas pro sebe</span> <span id="val4" style="color: var(--gold-dark);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(4, this.value)"></div>
+                        <div class="range-group"><div class="range-label"><span>Energie</span> <span id="val5" style="color: var(--gold-dark);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(5, this.value)"></div>
                     </div>
                     <div><canvas id="boundaryWheel"></canvas></div>
                 </div>
                 <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed #ddd;">
-                    <label>Co ti pohled na tvé kolo říká? Kde ti utíká nejvíc energie?</label>
+                    <label style="color: var(--gold-dark);">Co ti pohled na tvé kolo říká? Kde ti utíká nejvíc energie?</label>
                     <textarea id="wheelReflection" placeholder="Vidím, že..."></textarea>
                 </div>
             </div>
@@ -288,12 +289,12 @@
     <section class="sos-section">
         <div class="container">
             <div class="sos-box">
-                <h3 style="color: #C2185B; margin-bottom: 10px;">🆘 SOS Karta: Jak říct NE laskavě</h3>
-                <p style="margin-bottom: 25px;">
+                <h3 style="color: var(--gold-dark); margin-bottom: 10px;">🆘 SOS Karta: Jak říct NE laskavě</h3>
+                <p style="margin-bottom: 25px; color: #666;">
                     Konkrétní fráze pro chvíle, kdy tvůj nervový systém panikaří.
                 </p>
                 <a href="https://pdf.katerinaheallo.com/876gghgh" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-download"></i> Stáhnout PDF kartu
+                    <i class="fas fa-download" style="margin-right: 8px;"></i> Stáhnout PDF kartu
                 </a>
             </div>
         </div>
@@ -310,7 +311,7 @@
 
                 <div class="wb-block">
                     <h3>ČÁST 1-3: ANALÝZA KONKRÉTNÍCH SITUACÍ</h3>
-                    <p style="margin-bottom: 20px;">Vyplň si detailně 3 situace, kdy jsi řekla ANO místo NE.</p>
+                    <p style="margin-bottom: 20px; color: #555;">Vyplň si detailně 3 situace, kdy jsi řekla ANO místo NE.</p>
 
                     <div class="situation-box">
                         <div class="situation-header">Situace 1</div>
@@ -433,7 +434,7 @@
 
                 <div class="wb-block">
                     <h3>ČÁST 5: KDO MĚ SPOUŠTÍ?</h3>
-                    <p style="margin-bottom: 10px;">Seřaď si: Partner, Rodiče, Sourozenci, Přátelé, Šéf, Děti, Cizí lidé...</p>
+                    <p style="margin-bottom: 10px; color: #666;">Seřaď si: Partner, Rodiče, Sourozenci, Přátelé, Šéf, Děti, Cizí lidé...</p>
                     <label>Top 1 osoba (nejtěžší):</label>
                     <input type="text" id="trigger_p1_name" placeholder="Kdo?">
                     <input type="text" id="trigger_p1_why" placeholder="Proč je to u něj/ní tak těžké?">
@@ -451,29 +452,29 @@
                     <h3>ČÁST 6: MŮJ PLÁN ZMĚNY (66 DNÍ)</h3>
                     
                     <div class="plan-box">
-                        <span style="font-weight: 700; color: #922B6C;">Týden 1-2: Malé NE</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem;">"Teď nemůžu odpovědět. Ozvu se ti za 2 hodiny."</span>
+                        <span style="font-weight: 700; color: var(--gold-dark);">Týden 1-2: Malé NE</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem; color: #666;">"Teď nemůžu odpovědět. Ozvu se ti za 2 hodiny."</span>
                         <label>Vyber 3 bezpečné situace, kde to zkusíš:</label>
                         <textarea id="plan_week1"></textarea>
                     </div>
 
                     <div class="plan-box">
-                        <span style="font-weight: 700; color: #922B6C;">Týden 3-4: Střední NE</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem;">"Tohle pro mě není příjemné. Můžeme mluvit o něčem jiném?"</span>
+                        <span style="font-weight: 700; color: var(--gold-dark);">Týden 3-4: Střední NE</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem; color: #666;">"Tohle pro mě není příjemné. Můžeme mluvit o něčem jiném?"</span>
                         <label>Vyber 3 náročnější situace:</label>
                         <textarea id="plan_week3"></textarea>
                     </div>
 
                     <div class="plan-box">
-                        <span style="font-weight: 700; color: #922B6C;">Týden 5-7: Pevné NE</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem;">"Ne, tenhle plán mi nevyhovuje."</span>
+                        <span style="font-weight: 700; color: var(--gold-dark);">Týden 5-7: Pevné NE</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem; color: #666;">"Ne, tenhle plán mi nevyhovuje."</span>
                         <label>3 těžké situace:</label>
                         <textarea id="plan_week5"></textarea>
                     </div>
 
                     <div class="plan-box">
-                        <span style="font-weight: 700; color: #922B6C;">Týden 8-9: NE bez omluv</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem;">"Ne, děkuji."</span>
+                        <span style="font-weight: 700; color: var(--gold-dark);">Týden 8-9: NE bez omluv</span><br>
+                        <span style="font-style: italic; font-size: 0.9rem; color: #666;">"Ne, děkuji."</span>
                         <label>3 situace bez vysvětlování:</label>
                         <textarea id="plan_week8"></textarea>
                     </div>
@@ -526,7 +527,7 @@
                     <button onclick="window.print()" class="btn btn-print">
                         <i class="fas fa-print"></i> Uložit / Vytisknout Workbook (PDF)
                     </button>
-                    <p style="margin-top: 20px; color: var(--primary-berry); font-weight: 600;">
+                    <p style="margin-top: 20px; color: var(--gold-primary); font-weight: 600;">
                         "Říct NE někomu jinému znamená říct ANO sobě."
                     </p>
                 </div>
@@ -543,7 +544,7 @@
     </footer>
 
     <script>
-        // 1. GRAF
+        // 1. GRAF - Přizpůsobený do zlaté
         const ctx = document.getElementById('boundaryWheel').getContext('2d');
         const data = {
             labels: ['Práce', 'Rodina', 'Partnerství', 'Přátelé', 'Čas pro sebe', 'Energie'],
@@ -551,9 +552,9 @@
                 label: 'Moje hranice',
                 data: [5, 5, 5, 5, 5, 5],
                 fill: true,
-                backgroundColor: 'rgba(146, 43, 108, 0.2)', // Berry průhledná
-                borderColor: '#922B6C',
-                pointBackgroundColor: '#922B6C',
+                backgroundColor: 'rgba(197, 160, 89, 0.2)', // Zlatá průhledná
+                borderColor: '#C5A059',
+                pointBackgroundColor: '#C5A059',
                 pointBorderColor: '#fff'
             }]
         };
