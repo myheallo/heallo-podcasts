@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -18,6 +18,7 @@
             
             /* Hlavní barva (Zlatá): Luxusní, metalická */
             --gold-primary: #D4AF37;
+            --gold-bright: #F4D03F; /* NOVÁ: Jasnější zlatá pro akcenty */
             --gold-dim: #AA8C2C;
             --gold-glow: rgba(212, 175, 55, 0.15);
             
@@ -43,7 +44,6 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--text-light);
             background-color: var(--text-dark-bg);
-            /* Jemná textura šumu (volitelné) nebo čistá černá */
             background-image: linear-gradient(180deg, #050505 0%, #111111 100%);
             line-height: 1.7;
             font-size: 16px;
@@ -85,11 +85,12 @@
         }
 
         .btn-primary {
-            /* Zlatý Gradient */
-            background: linear-gradient(135deg, var(--gold-dim), var(--gold-primary));
-            color: #000; /* Černý text na zlaté pro čitelnost */
+            /* Zlatý Gradient - Jasnější */
+            background: linear-gradient(135deg, var(--gold-dim), var(--gold-bright));
+            color: #000;
+            font-weight: 700;
         }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); color: #000; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(244, 208, 63, 0.4); color: #000; }
 
         .btn-outline {
             background: transparent;
@@ -111,8 +112,8 @@
         /* --- Hero --- */
         .hero { padding: 60px 0 40px 0; text-align: center; }
         .hero-img {
-            width: 220px; border-radius: 10px; /* Ostřejší rohy pro luxus */
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--gold-dim); /* Zlatý rámeček */
+            width: 220px; border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--gold-dim);
             margin: 0 auto 30px auto; display: block;
         }
         .subheading { font-weight: 400; font-size: 1.4rem; font-style: italic; color: var(--text-muted); display: block; margin-top: 10px;}
@@ -124,7 +125,7 @@
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Velmi jemný okraj */
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.3s;
         }
         .card:hover { transform: translateY(-3px); border-color: var(--gold-dim); }
@@ -155,7 +156,6 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
             position: relative;
         }
-        /* Zlatý efekt nahoře na "papíře" */
         .wb-paper::before {
             content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
             width: 100px; height: 3px; background: var(--gold-primary); border-radius: 0 0 10px 10px;
@@ -166,7 +166,7 @@
         .wb-block { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px dashed #333; }
         .wb-block:last-child { border: none; }
 
-        /* Situation Box - Tmavší vnořená karta */
+        /* Situation Box */
         .situation-box {
             background: #1A1A1A; 
             padding: 30px;
@@ -179,7 +179,7 @@
         label { display: block; font-weight: 700; color: #FFF; margin-bottom: 8px; font-size: 1rem; margin-top: 20px; }
         .sub-label { display: block; font-size: 0.85rem; color: #888; margin-bottom: 8px; font-style: italic; }
 
-        /* Inputy v Dark Mode */
+        /* Inputy */
         textarea, input[type="text"] {
             width: 100%; padding: 12px;
             border: 1px solid #333; border-radius: 12px;
@@ -209,7 +209,7 @@
         .tracker-table td { padding: 10px; border-bottom: 1px solid #222; vertical-align: top; }
         .tracker-input { min-height: 40px; margin: 0; border: 1px solid #333; background: #1a1a1a; }
 
-        /* SOS Box - Tmavý s akcentem */
+        /* SOS Box */
         .sos-box {
             background: #141414;
             padding: 40px; border-radius: 20px; text-align: center;
@@ -237,7 +237,7 @@
             .workbook-section { padding: 0; background: none; }
             .wb-paper { box-shadow: none; border: none; padding: 0; width: 100%; max-width: 100%; color: black; }
             .wb-block, .situation-box, .plan-box { border: 1px solid #ddd; background: white; color: black; }
-            h1, h2, h3, h4, label { color: black !important; }
+            h1, h2, h3, h4, label { color: black !important; text-shadow: none !important; }
             textarea, input { background: white; border: 1px solid #ccc; color: black; }
             .situation-header { border-left-color: #000; }
         }
@@ -258,363 +258,4 @@
     <div class="container" style="margin-top: -20px;">
         <div class="grid-2">
             <div class="card podcast-item">
-                <div class="podcast-icon" style="background: #1DB954;"><i class="fab fa-spotify"></i></div>
-                <h4 style="color: #FFF;">Veřejná epizoda</h4>
-                <p style="font-size:0.9rem; margin-bottom: 20px; color: #888;">Bridget Jones a teorie traumatu.</p>
-                <a href="https://open.spotify.com/episode/2FqGcPaqu7dK9OJYmK0TTr?si=KCgc_zZaTI-6A443u3kv-w" target="_blank" class="btn btn-spotify">
-                    <i class="fas fa-play" style="margin-right: 10px;"></i> Přehrát
-                </a>
-            </div>
-
-            <div class="card podcast-item" style="border: 1px solid var(--gold-dim);">
-                <div class="podcast-icon" style="background: linear-gradient(135deg, #B8860B, #D4AF37); color: #000;"><i class="fas fa-star"></i></div>
-                <h4 style="color: var(--gold-primary);">Bonus pro tebe</h4>
-                <p style="font-size:0.9rem; margin-bottom: 20px; color: #888;">Nervový systém a 66 dní změny.</p>
-                <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-se-bojim-rict-ne-a-co-se-stane-kdyz-to-zkusim/s-Zzp9heWtCsw?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=c432dc52aab4472bb5b8d65dd6cbc0d1" target="_blank" class="btn btn-primary">
-                    <i class="fab fa-soundcloud" style="margin-right: 10px;"></i> Přehrát Bonus
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <section>
-        <div class="container">
-            <div class="card wheel-section">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <h2>⭕ Tvé Kolo hranic</h2>
-                    <p style="color: #888;">Ohodnoť, jak pevné hranice cítíš (0 = Žádné/Strach, 10 = Zdravé/Respekt)</p>
-                </div>
-                <div class="wheel-container">
-                    <div class="wheel-inputs">
-                        <div class="range-group"><div class="range-label"><span>Práce & Kariéra</span> <span id="val0" style="color: var(--gold-primary);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(0, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Rodina</span> <span id="val1" style="color: var(--gold-primary);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(1, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Partnerství</span> <span id="val2" style="color: var(--gold-primary);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(2, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Přátelé</span> <span id="val3" style="color: var(--gold-primary);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(3, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Čas pro sebe</span> <span id="val4" style="color: var(--gold-primary);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(4, this.value)"></div>
-                        <div class="range-group"><div class="range-label"><span>Energie</span> <span id="val5" style="color: var(--gold-primary);">5</span></div><input type="range" min="0" max="10" value="5" oninput="updateChart(5, this.value)"></div>
-                    </div>
-                    <div><canvas id="boundaryWheel"></canvas></div>
-                </div>
-                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
-                    <label style="color: var(--gold-primary);">Co ti pohled na tvé kolo říká? Kde ti utíká nejvíc energie?</label>
-                    <textarea id="wheelReflection" placeholder="Vidím, že..." style="background: #0f0f0f; border-color: #333;"></textarea>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="sos-section">
-        <div class="container">
-            <div class="sos-box">
-                <h3 style="color: var(--gold-primary); margin-bottom: 10px; border: none;">🆘 SOS Karta: Jak říct NE laskavě</h3>
-                <p style="margin-bottom: 25px; color: #ccc;">
-                    Konkrétní fráze pro chvíle, kdy tvůj nervový systém panikaří.
-                </p>
-                <a href="https://pdf.katerinaheallo.com/876gghgh" target="_blank" class="btn btn-outline">
-                    <i class="fas fa-download" style="margin-right: 10px;"></i> Stáhnout PDF kartu
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="workbook-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 10px; color: var(--gold-primary);">📋 WORKBOOK: "Mapa mého ANO"</h2>
-            <div class="wb-paper">
-                <p class="wb-intro">
-                    Tento workbook vám pomůže rozpoznat, kdy říkáte ANO, ale myslíte NE, pochopit původ tohoto vzorce a vytvořit plán změny.<br>
-                    <small style="color: var(--gold-dim);">✨ Vše se automaticky ukládá v tomto prohlížeči. Nikdo jiný to neuvidí.</small>
-                </p>
-
-                <div class="wb-block">
-                    <h3>ČÁST 1-3: ANALÝZA KONKRÉTNÍCH SITUACÍ</h3>
-                    <p style="margin-bottom: 20px; color: #aaa;">Vyplň si detailně 3 situace, kdy jsi řekla ANO místo NE.</p>
-
-                    <div class="situation-box">
-                        <div class="situation-header">Situace 1</div>
-                        
-                        <label>Co se stalo? (Kdo tě o co požádal?)</label>
-                        <textarea id="s1_what"></textarea>
-                        
-                        <label>Co jsi řekla?</label>
-                        <textarea id="s1_said"></textarea>
-                        
-                        <label>Co jsi ve skutečnosti chtěla říct?</label>
-                        <textarea id="s1_wanted"></textarea>
-
-                        <label>Co jsi cítila v těle PŘED tím, než jsi řekla ANO?</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body1"> Sevření v žaludku</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body2"> Napětí v ramenou</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body3"> Rychlejší dech</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body4"> Zrychlený tep</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body5"> Horko v obličeji</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body6"> Pocit prázdnoty</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body7"> Nevolnost</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_body8"> Tlak v hrudi</label>
-                        </div>
-                        <input type="text" id="s1_body_other" placeholder="Jiné...">
-
-                        <label>Jaké bylo tvé automatické přesvědčení? "Pokud řeknu NE..."</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="s1_bel1"> ...bude naštvaný/á</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_bel2"> ...přestane mě mít rád/a</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_bel3"> ...jsem sobecká</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_bel4"> ...nejsem dobrý člověk</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_bel5"> ...opustí mě</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s1_bel6"> ...zklamu je</label>
-                        </div>
-                    </div>
-
-                    <div class="situation-box">
-                        <div class="situation-header">Situace 2</div>
-                        
-                        <label>Co se stalo?</label>
-                        <textarea id="s2_what"></textarea>
-                        
-                        <label>Co jsi řekla?</label>
-                        <textarea id="s2_said"></textarea>
-                        
-                        <label>Co jsi ve skutečnosti chtěla říct?</label>
-                        <textarea id="s2_wanted"></textarea>
-
-                        <label>Co jsi cítila v těle?</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body1"> Sevření v žaludku</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body2"> Napětí v ramenou</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body3"> Rychlejší dech</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body4"> Zrychlený tep</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body5"> Horko v obličeji</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body6"> Pocit prázdnoty</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body7"> Nevolnost</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_body8"> Tlak v hrudi</label>
-                        </div>
-
-                        <label>Automatické přesvědčení? "Pokud řeknu NE..."</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="s2_bel1"> ...bude naštvaný/á</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_bel2"> ...přestane mě mít rád/a</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_bel3"> ...jsem sobecká</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_bel4"> ...nejsem dobrý člověk</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_bel5"> ...opustí mě</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s2_bel6"> ...zklamu je</label>
-                        </div>
-                    </div>
-
-                    <div class="situation-box">
-                        <div class="situation-header">Situace 3</div>
-                        
-                        <label>Co se stalo?</label>
-                        <textarea id="s3_what"></textarea>
-                        
-                        <label>Co jsi řekla?</label>
-                        <textarea id="s3_said"></textarea>
-                        
-                        <label>Co jsi ve skutečnosti chtěla říct?</label>
-                        <textarea id="s3_wanted"></textarea>
-
-                        <label>Co jsi cítila v těle?</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body1"> Sevření v žaludku</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body2"> Napětí v ramenou</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body3"> Rychlejší dech</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body4"> Zrychlený tep</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body5"> Horko v obličeji</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body6"> Pocit prázdnoty</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body7"> Nevolnost</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_body8"> Tlak v hrudi</label>
-                        </div>
-
-                        <label>Automatické přesvědčení? "Pokud řeknu NE..."</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" id="s3_bel1"> ...bude naštvaný/á</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_bel2"> ...přestane mě mít rád/a</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_bel3"> ...jsem sobecká</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_bel4"> ...nejsem dobrý člověk</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_bel5"> ...opustí mě</label>
-                            <label class="checkbox-label"><input type="checkbox" id="s3_bel6"> ...zklamu je</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wb-block">
-                    <h3>ČÁST 4: ODKUD TO POCHÁZÍ?</h3>
-                    <label>Jak reagovali rodiče, když jsi jako dítě řekla NE? (Naštvaně? Smutně?)</label>
-                    <textarea id="childhood_reaction"></textarea>
-                    
-                    <label>Jaká byla zpráva, kterou sis odnesla?</label>
-                    <textarea id="childhood_message"></textarea>
-
-                    <label>Kdy jsi poprvé cítila, že musíš být "milá", abys byla v bezpečí?</label>
-                    <textarea id="childhood_memory"></textarea>
-                </div>
-
-                <div class="wb-block">
-                    <h3>ČÁST 5: KDO MĚ SPOUŠTÍ?</h3>
-                    <p style="margin-bottom: 10px; color: #888;">Seřaď si: Partner, Rodiče, Sourozenci, Přátelé, Šéf, Děti, Cizí lidé...</p>
-                    <label>Top 1 osoba (nejtěžší):</label>
-                    <input type="text" id="trigger_p1_name" placeholder="Kdo?">
-                    <input type="text" id="trigger_p1_why" placeholder="Proč je to u něj/ní tak těžké?">
-
-                    <label>Top 2 osoba:</label>
-                    <input type="text" id="trigger_p2_name" placeholder="Kdo?">
-                    <input type="text" id="trigger_p2_why" placeholder="Proč?">
-
-                    <label>Top 3 osoba:</label>
-                    <input type="text" id="trigger_p3_name" placeholder="Kdo?">
-                    <input type="text" id="trigger_p3_why" placeholder="Proč?">
-                </div>
-
-                <div class="wb-block">
-                    <h3>ČÁST 6: MŮJ PLÁN ZMĚNY (66 DNÍ)</h3>
-                    
-                    <div class="plan-box">
-                        <span style="font-weight: 700; color: var(--gold-primary);">Týden 1-2: Malé NE</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem; color: #999;">"Teď nemůžu odpovědět. Ozvu se ti za 2 hodiny."</span>
-                        <label>Vyber 3 bezpečné situace, kde to zkusíš:</label>
-                        <textarea id="plan_week1"></textarea>
-                    </div>
-
-                    <div class="plan-box">
-                        <span style="font-weight: 700; color: var(--gold-primary);">Týden 3-4: Střední NE</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem; color: #999;">"Tohle pro mě není příjemné. Můžeme mluvit o něčem jiném?"</span>
-                        <label>Vyber 3 náročnější situace:</label>
-                        <textarea id="plan_week3"></textarea>
-                    </div>
-
-                    <div class="plan-box">
-                        <span style="font-weight: 700; color: var(--gold-primary);">Týden 5-7: Pevné NE</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem; color: #999;">"Ne, tenhle plán mi nevyhovuje."</span>
-                        <label>3 těžké situace:</label>
-                        <textarea id="plan_week5"></textarea>
-                    </div>
-
-                    <div class="plan-box">
-                        <span style="font-weight: 700; color: var(--gold-primary);">Týden 8-9: NE bez omluv</span><br>
-                        <span style="font-style: italic; font-size: 0.9rem; color: #999;">"Ne, děkuji."</span>
-                        <label>3 situace bez vysvětlování:</label>
-                        <textarea id="plan_week8"></textarea>
-                    </div>
-                </div>
-
-                <div class="wb-block">
-                    <h3>ČÁST 7: DENNÍ TRACKER (Prvních 7 dní)</h3>
-                    <div class="table-responsive">
-                        <table class="tracker-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 10%;">Den</th>
-                                    <th style="width: 15%;">Řekla jsem NE?</th>
-                                    <th style="width: 15%;">Pocit (1-10)</th>
-                                    <th>Poznámka / Co se stalo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><strong>Den 1</strong></td><td><input type="checkbox" id="t_d1"></td><td><input type="text" id="t_d1_f" class="tracker-input"></td><td><input type="text" id="t_d1_n" class="tracker-input"></td></tr>
-                                <tr><td><strong>Den 2</strong></td><td><input type="checkbox" id="t_d2"></td><td><input type="text" id="t_d2_f" class="tracker-input"></td><td><input type="text" id="t_d2_n" class="tracker-input"></td></tr>
-                                <tr><td><strong>Den 3</strong></td><td><input type="checkbox" id="t_d3"></td><td><input type="text" id="t_d3_f" class="tracker-input"></td><td><input type="text" id="t_d3_n" class="tracker-input"></td></tr>
-                                <tr><td><strong>Den 4</strong></td><td><input type="checkbox" id="t_d4"></td><td><input type="text" id="t_d4_f" class="tracker-input"></td><td><input type="text" id="t_d4_n" class="tracker-input"></td></tr>
-                                <tr><td><strong>Den 5</strong></td><td><input type="checkbox" id="t_d5"></td><td><input type="text" id="t_d5_f" class="tracker-input"></td><td><input type="text" id="t_d5_n" class="tracker-input"></td></tr>
-                                <tr><td><strong>Den 6</strong></td><td><input type="checkbox" id="t_d6"></td><td><input type="text" id="t_d6_f" class="tracker-input"></td><td><input type="text" id="t_d6_n" class="tracker-input"></td></tr>
-                                <tr><td><strong>Den 7</strong></td><td><input type="checkbox" id="t_d7"></td><td><input type="text" id="t_d7_f" class="tracker-input"></td><td><input type="text" id="t_d7_n" class="tracker-input"></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="wb-block" style="border:none;">
-                    <h3>ČÁST 8: REFLEXE PO 66 DNECH</h3>
-                    <label>Co se změnilo?</label>
-                    <textarea id="ref_changed"></textarea>
-                    
-                    <label>Jaké tělesné signály teď vnímám jinak?</label>
-                    <textarea id="ref_body"></textarea>
-                    
-                    <label>Co bylo nejtěžší?</label>
-                    <textarea id="ref_hard"></textarea>
-                    
-                    <label>Kdo respektuje moje hranice? Kdo ne?</label>
-                    <textarea id="ref_who"></textarea>
-                    
-                    <label>Co si odnáším?</label>
-                    <textarea id="ref_takeaway"></textarea>
-                </div>
-
-                <div style="text-align: center; margin-top: 40px;">
-                    <button onclick="window.print()" class="btn btn-print">
-                        <i class="fas fa-print"></i> Uložit / Vytisknout Workbook (PDF)
-                    </button>
-                    <p style="margin-top: 20px; color: var(--gold-primary); font-weight: 600;">
-                        "Říct NE někomu jinému znamená říct ANO sobě."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p style="margin-bottom: 15px; font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #FFF;">S láskou, Kateřina ♡ | PSYCHO-LOGICKY</p>
-        <div>
-            <a href="https://www.instagram.com/myheallo/" target="_blank">Instagram</a>
-            <a href="https://www.katerinaheallo.com" target="_blank">Web</a>
-        </div>
-    </footer>
-
-    <script>
-        // 1. GRAF - Změněno na Zlatou paletu
-        const ctx = document.getElementById('boundaryWheel').getContext('2d');
-        const data = {
-            labels: ['Práce', 'Rodina', 'Partnerství', 'Přátelé', 'Čas pro sebe', 'Energie'],
-            datasets: [{
-                label: 'Moje hranice',
-                data: [5, 5, 5, 5, 5, 5],
-                fill: true,
-                backgroundColor: 'rgba(212, 175, 55, 0.2)', // Zlatá průhledná
-                borderColor: '#D4AF37', // Plná zlatá
-                pointBackgroundColor: '#D4AF37',
-                pointBorderColor: '#fff'
-            }]
-        };
-        const config = {
-            type: 'radar', data: data,
-            options: {
-                elements: { line: { borderWidth: 3 } },
-                scales: { 
-                    r: { 
-                        angleLines: { display: true, color: '#333' }, // Tmavé linky
-                        grid: { color: '#333' }, // Tmavá mřížka
-                        pointLabels: { color: '#CCC' }, // Světlé popisky
-                        suggestedMin: 0, 
-                        suggestedMax: 10, 
-                        ticks: { display: false, backdropColor: 'transparent' } 
-                    } 
-                },
-                plugins: { legend: { display: false } }
-            }
-        };
-        const myChart = new Chart(ctx, config);
-        function updateChart(index, value) {
-            document.getElementById('val' + index).innerText = value;
-            myChart.data.datasets[0].data[index] = value;
-            myChart.update();
-        }
-
-        // 2. UKLÁDÁNÍ
-        document.addEventListener('DOMContentLoaded', function() {
-            const inputs = document.querySelectorAll('textarea, input[type="text"], input[type="checkbox"]');
-            inputs.forEach(input => {
-                if(input.type === 'checkbox') {
-                    const saved = localStorage.getItem('psych_full_' + input.id);
-                    if(saved === 'true') input.checked = true;
-                    input.addEventListener('change', function() { localStorage.setItem('psych_full_' + this.id, this.checked); });
-                } else {
-                    const saved = localStorage.getItem('psych_full_' + input.id);
-                    if(saved) input.value = saved;
-                    input.addEventListener('input', function() { localStorage.setItem('psych_full_' + this.id, this.value); });
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
+                <div class="podcast-icon" style="background: #1DB954;"><i class="fab fa-
