@@ -18,6 +18,8 @@
             
             --bg-gold-light: #F9F5F0;     /* Jemná béžová */
             
+            --spotify-green: #1DB954;     /* Spotify Zelená */
+            
             --accent-black: #1a1a1a;      /* Černá (pro text a kontrast) */
             --accent-black-hover: #333333;
 
@@ -77,7 +79,7 @@
             margin: 5px 0;
         }
 
-        /* Černé tlačítko (pro méně emoční akce) */
+        /* Černé tlačítko (základní) */
         .btn-primary { background-color: var(--accent-black); color: white; }
         .btn-primary:hover { background-color: var(--accent-black-hover); transform: translateY(-2px); }
 
@@ -85,11 +87,24 @@
         .btn-outline { background-color: transparent; border: 2px solid var(--primary-gold); color: var(--primary-gold); }
         .btn-outline:hover { background-color: var(--primary-gold); color: white; }
 
-        /* Soundcloud (sjednoceno do zlaté) */
+        /* Spotify Tlačítko (Zelené obrysové) */
+        .btn-spotify-outline {
+            background-color: transparent;
+            border: 2px solid var(--spotify-green);
+            color: var(--spotify-green);
+        }
+        .btn-spotify-outline:hover {
+            background-color: var(--spotify-green);
+            color: white;
+            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Bonus/Soundcloud (Zlaté Luxusní) */
         .btn-soundcloud { background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-dark)); color: white; }
         .btn-soundcloud:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3); }
 
-        /* NOVÉ: Zlaté plné tlačítko (pro SOS) */
+        /* SOS Tlačítko (Zlaté plné) */
         .btn-gold-solid { 
             background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark)); 
             color: white; 
@@ -148,7 +163,7 @@
             background-color: #f1f3f4;
         }
 
-        /* --- SOS Karta (Upraveno) --- */
+        /* --- SOS Karta --- */
         .sos-section {
             padding: 0 0 50px 0;
             text-align: center;
@@ -282,7 +297,7 @@
         
         @media print {
             body { background: white; }
-            .hero, .episodes-box, .meditation-section, .sos-section, footer, .btn-print, .btn-gold-solid { display: none; }
+            .hero, .episodes-box, .meditation-section, .sos-section, footer, .btn-print, .btn-gold-solid, .btn-spotify-outline { display: none; }
             .workbook-section { padding: 0; background: none; }
             .workbook-paper { box-shadow: none; padding: 0; }
         }
@@ -304,15 +319,21 @@
             
             <div class="episodes-grid">
                 <div class="episode-col">
-                    <h3 style="font-size: 1.1rem;">🎧 Původní epizoda</h3>
+                    <h3 style="font-size: 1.1rem; color: var(--text-dark);">
+                        <i class="fas fa-headphones-alt" style="color: var(--spotify-green); margin-right: 8px;"></i> 
+                        Původní epizoda
+                    </h3>
                     <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Kde to všechno začalo.</p>
-                    <a href="https://open.spotify.com/episode/3cTeljPt3J0UaF18UwdRZR?si=XsE92RDCSDy94ouLHukDVQ" target="_blank" class="btn btn-outline">
-                        <i class="fab fa-spotify"></i> Přehrát epizodu
+                    <a href="https://open.spotify.com/episode/3cTeljPt3J0UaF18UwdRZR?si=XsE92RDCSDy94ouLHukDVQ" target="_blank" class="btn btn-spotify-outline">
+                        <i class="fab fa-spotify"></i> Přehrát na Spotify
                     </a>
                 </div>
 
                 <div class="episode-col">
-                    <h3 style="font-size: 1.1rem; color: var(--primary-gold);">🎁 Bonusová epizoda</h3>
+                    <h3 style="font-size: 1.1rem; color: var(--primary-gold);">
+                        <i class="fas fa-gift" style="margin-right: 8px;"></i> 
+                        Bonusová epizoda
+                    </h3>
                     <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Hlubší vhledy jen pro tebe.</p>
                     <a href="https://soundcloud.com/katerina-heallo/bonus-1-proc-ti-chutna-neco-co-ti-nesmi-chutnat/s-lmZolG2Wnq7?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&si=e6ca95978e1646848a759a6176ee9ca9" target="_blank" class="btn btn-soundcloud">
                         <i class="fab fa-soundcloud"></i> Přehrát Bonus
