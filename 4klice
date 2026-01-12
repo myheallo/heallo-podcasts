@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>4 Klíče k pochopení tvých stresových reakcí | HEALLO®</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Dark Lux Paleta - Vylepšená */
+            --gold-primary: #C5A059;
+            --gold-dark: #9E7D3D;
+            --gold-light: #D4B67D;
+            --text-dark: #2C2C2C;
+            --text-muted: #666666;
+            --bg-cream: #FDFBF7; /* Velmi jemná krémová */
+            --bg-white: #FFFFFF;
+            --border-color: #EBE5DA;
+            --radius: 24px; /* Větší zaoblení pro modernější vzhled */
+            --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.06); /* Jemnější, luxusnější stín */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            /* Velmi jemný gradient na pozadí pro hloubku */
+            background-image: linear-gradient(to bottom, #ffffff, var(--bg-cream));
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            line-height: 1.25;
+        }
+
+        h1 { font-size: 2.8rem; margin-bottom: 1.2rem; font-weight: 700; color: var(--gold-dark); }
+        h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--gold-dark); }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
+        h4 { font-size: 1.1rem; margin-bottom: 0.8rem; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 1.5px; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 25px; }
+        section { padding: 60px 0; }
+
+        /* Hero */
+        .hero { padding: 80px 0 50px 0; text-align: center; }
+        .hero h1 { margin-bottom: 20px; }
+        .hero p { color: var(--text-muted); font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px auto; line-height: 1.8; }
+        .hero strong { color: var(--gold-dark); font-weight: 600; }
+
+        /* Tlačítka */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            color: white;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.4); 
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+        }
+        .btn i { margin-right: 12px; font-size: 1.2rem;}
+
+        /* Karty */
+        .card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 50px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 40px;
+            border: 1px solid #FFFFFF; /* Bílý okraj pro "vystouplý" efekt */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dekorativní prvek na kartě (volitelné) */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+            opacity: 0.6;
+        }
+
+        .reaction-page {
+            scroll-margin-top: 40px;
+        }
+
+        .reaction-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .reaction-left h2 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            color: var(--gold-dark);
+            text-align: left;
+            line-height: 1.1;
+        }
+        .reaction-left .subtitle-h4 {
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .reaction-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .icon-fight { background: linear-gradient(135deg, #D32F2F, #B71C1C); }
+        .icon-flight { background: linear-gradient(135deg, #F57C00, #E65100); }
+        .icon-freeze { background: linear-gradient(135deg, #1976D2, #0D47A1); }
+        .icon-fawn { background: linear-gradient(135deg, #8E24AA, #4A148C); }
+
+        .signs-list { list-style: none; padding: 0; margin-top: 30px; }
+        .signs-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        .signs-list li:before {
+            content: "\f061"; /* FontAwesome šipka */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: var(--gold-primary);
+            font-size: 1.1rem;
+        }
+
+        /* Reflexní box */
+        .reflection-box {
+            background: #FBF9F4;
+            padding: 35px;
+            border-radius: var(--radius);
+            border-left: 5px solid var(--gold-primary);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        .reflection-box h4 {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: var(--text-muted);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .question { margin-bottom: 25px; }
+        .question label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 80px;
+            background: white;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.15);
+        }
+        textarea::placeholder { color: #aaa; font-weight: 300; }
+
+        /* CTA Sekce s Podcastem - NOVÉ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Jemný vzor na pozadí CTA (volitelné) */
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM32 63c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm57-13c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .cta-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-image-wrapper {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .cta-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            transform: rotate(-3deg); /* Jemné natočení pro dynamiku */
+            transition: transform 0.3s ease;
+        }
+        .cta-image-wrapper img:hover { transform: rotate(0deg) scale(1.02); }
+
+        .cta-content {
+            flex: 1.4;
+            text-align: left;
+            color: white;
+        }
+
+        .cta-content h2 { color: white; font-size: 2.5rem; margin-bottom: 20px; }
+        .cta-content p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.95; line-height: 1.6; }
+        .cta-episode-info { display: inline-block; margin-top: 25px; font-size: 0.95rem; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px; }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        footer .brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 25px; display: inline-block;}
+        
+        footer .social-links a {
+            color: var(--gold-primary);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+        }
+        footer .social-links a i { margin-right: 8px; }
+        footer .social-links a:hover { color: white; transform: translateY(-2px); }
+        
+        footer .copyright { margin-top: 30px; font-size: 0.85rem; opacity: 0.6; }
+
+        /* Ostatní prvky */
+        .quote-box {
+            background: white;
+            padding: 35px;
+            border-left: 6px solid var(--gold-primary);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            margin: 40px auto;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            max-width: 750px;
+            box-shadow: var(--shadow-soft);
+            color: var(--gold-dark);
+        }
+
+        /* --- MOBILE OPTIMIZATION (Zásadní vylepšení) --- */
+        @media (max-width: 900px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .card { padding: 35px 25px; }
+            .reaction-grid { grid-template-columns: 1fr; gap: 40px; }
+            .reaction-left h2 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 40px 0; }
+            .container { padding: 0 20px; }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.35rem; }
+            
+            .hero { padding: 50px 0 30px 0; }
+            .card { padding: 30px 20px; border-radius: 20px; }
+
+            /* Mobilní zobrazení reakcí */
+            .reaction-left { text-align: center; }
+            .reaction-icon { margin: 0 auto 20px auto; width: 80px; height: 80px; font-size: 2rem; }
+            .reaction-left h2 { font-size: 2.2rem; text-align: center; }
+            .signs-list li { text-align: left; }
+
+            .reflection-box { padding: 25px 20px; }
+
+            /* Mobilní zobrazení CTA (Podcast) */
+            .cta-container { flex-direction: column; text-align: center; gap: 35px; }
+            .cta-image-wrapper { max-width: 280px; margin: 0 auto; }
+            .cta-image-wrapper img { transform: rotate(0deg); } /* Zrušit natočení na mobilu */
+            .cta-content { text-align: center; }
+            .cta-content h2 { font-size: 2rem; }
+            .cta-content p { font-size: 1.1rem; }
+            .btn { width: 100%; max-width: 350px; padding: 15px 30px; }
+
+            .quote-box { font-size: 1.15rem; padding: 25px; margin: 30px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <h1>4 Klíče k pochopení<br>tvých stresových reakcí</h1>
+            <p>Tvoje tělo má 4 základní reakce na stres. Když je poznáš, můžeš začít rozumět svému chování – <strong>v práci, ve vztazích, i u jídla.</strong></p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--gold-dark);">Co se děje, když se cítíš v ohrožení?</h3>
+                
+                <p style="margin-bottom: 20px;">Možná znáš první tři reakce: <strong>FIGHT</strong> (bojuj), <strong>FLIGHT</strong> (uteč), <strong>FREEZE</strong> (zmrzni). Ale je tady ještě čtvrtá reakce, o které se skoro nemluví:</p>
+                
+                <p style="margin-bottom: 25px; font-size: 1.2rem; text-align: center; color: var(--gold-primary); font-weight: 700;">✨ FAWN (usmiřuj) ✨</p>
+                
+                <p style="margin-bottom: 20px;">Pete Walker, psychoterapeut, ji popsal jako <em>"strategii přežití dítěte v nepředvídatelném prostředí."</em> Dítě se naučí: <strong>Když budu dokonale milé, nemůžou mě opustit.</strong></p>
+                
+                <p style="margin-bottom: 30px;">A tohle s námi zůstává i v dospělosti.</p>
+
+                <div class="quote-box">
+                    "Tvoje reakce na stres nejsou chyba. Jsou důkaz, že tvůj nervový systém funguje."
+                </div>
+
+                <p style="margin-bottom: 20px;">V tomto průvodci si projdeme všechny 4 reakce. Ukážu ti, jak je rozpoznat u sebe – a co s tím.</p>
+                
+                <p style="color: var(--gold-dark); font-style: italic; font-weight: 500; text-align: center; margin-top: 40px;">
+                    <i class="fas fa-pen-fancy" style="margin-right: 10px;"></i> Připrav si tužku. Tohle není jen čtení. Je to práce na sobě.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reaction-page" id="fight">
+        <div class="container">
+            <div class="card">
+                <div class="reaction-grid">
+                    <div class="reaction-left">
+                        <div class="reaction-icon icon-fight">
+                            <i class="fas fa-hand-fist"></i>
+                        </div>
+                        <h2>FIGHT</h2>
+                        <h4 class="subtitle-h4">Bojuj</h4>
+                        <p style="margin-bottom: 30px; color: var(--text-muted); line-height: 1.8;">
+                            Tvoje tělo se připravuje na konflikt. Energie jde do svalů. Jsi připravená bránit se – slovy, činy, agresí.
+                        </p>
+
+                        <h4 style="margin-bottom: 15px;">Jak to poznám u sebe?</h4>
+                        <ul class="signs-list">
+                            <li>Hádám se, i když to není potřeba</li>
+                            <li>Mám silnou potřebu mít pravdu</li>
+                            <li>Když se cítím ohrožená, okamžitě útočím</li>
+                            <li>Obvykle jsem ta, kdo nakonec "vybouchne"</li>
+                        </ul>
+                    </div>
+
+                    <div class="reaction-right">
+                        <div class="reflection-box">
+                            <h4><i class="far fa-compass" style="margin-right: 8px;"></i> MINI REFLEXE</h4>
+                            
+                            <div class="question">
+                                <label>Kdy jsem naposledy reagovala takhle?</label>
+                                <textarea placeholder="Popiš situaci, místo, lidi..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Co se přesně dělo v mém těle?</label>
+                                <textarea placeholder="Napětí v rukou, horko, rychlý tep, sevřená čelist..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Co jsem tímto chováním chránila?</label>
+                                <textarea placeholder="Svou hodnotu? Své hranice? Pocit bezpečí?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reaction-page" id="flight">
+        <div class="container">
+            <div class="card">
+                <div class="reaction-grid">
+                    <div class="reaction-left">
+                        <div class="reaction-icon icon-flight">
+                            <i class="fas fa-person-running"></i>
+                        </div>
+                        <h2>FLIGHT</h2>
+                        <h4 class="subtitle-h4">Uteč</h4>
+                        <p style="margin-bottom: 30px; color: var(--text-muted); line-height: 1.8;">
+                            Tvoje tělo křičí: "Pryč odsud!" Cítíš potřebu pohybu, rozptýlení, úniku. Nechceš čelit tomu, co je – fyzicky ani emocionálně.
+                        </p>
+
+                        <h4 style="margin-bottom: 15px;">Jak to poznám u sebe?</h4>
+                        <ul class="signs-list">
+                            <li>Když je situace těžká, najdu si důvod odejít</li>
+                            <li>Chronicky se vyhýbám konfliktům</li>
+                            <li>Rychle přepínám pozornost (práce, mobil, jídlo)</li>
+                            <li>Mám intenzivní vnitřní neklid a pocit "musím pryč"</li>
+                        </ul>
+                    </div>
+
+                    <div class="reaction-right">
+                        <div class="reflection-box">
+                            <h4><i class="far fa-compass" style="margin-right: 8px;"></i> MINI REFLEXE</h4>
+                            
+                            <div class="question">
+                                <label>Kdy jsem naposledy reagovala takhle?</label>
+                                <textarea placeholder="Popiš situaci, místo, lidi..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Co se přesně dělo v mém těle?</label>
+                                <textarea placeholder="Neklid v nohách, těkavé oči, mělký dech, úzkost..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Před čím jsem utíkala?</label>
+                                <textarea placeholder="Jaká emoce nebo situace byla příliš těžká k unesení?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reaction-page" id="freeze">
+        <div class="container">
+            <div class="card">
+                <div class="reaction-grid">
+                    <div class="reaction-left">
+                        <div class="reaction-icon icon-freeze">
+                            <i class="far fa-snowflake"></i>
+                        </div>
+                        <h2>FREEZE</h2>
+                        <h4 class="subtitle-h4">Zmrzni</h4>
+                        <p style="margin-bottom: 30px; color: var(--text-muted); line-height: 1.8;">
+                            Tvoje tělo se zastaví. "Vypneš se". Nemůžeš jednat, mluvit, rozhodnout se. Cítíš se odpojená, jako za sklem. Je to obrana, když útok ani útěk nejsou možné.
+                        </p>
+
+                        <h4 style="margin-bottom: 15px;">Jak to poznám u sebe?</h4>
+                        <ul class="signs-list">
+                            <li>V konfliktu doslova "zmrznu" a nevím, co říct</li>
+                            <li>Cítím se odpojená od svého těla (disociace)</li>
+                            <li>Mám "vymyglováno", nedokážu se rozhodnout</li>
+                            <li>Jako bych nebyla úplně přítomná v realitě</li>
+                        </ul>
+                    </div>
+
+                    <div class="reaction-right">
+                        <div class="reflection-box">
+                            <h4><i class="far fa-compass" style="margin-right: 8px;"></i> MINI REFLEXE</h4>
+                            
+                            <div class="question">
+                                <label>Kdy jsem naposledy reagovala takhle?</label>
+                                <textarea placeholder="Popiš situaci, místo, lidi..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Co se přesně dělo v mém těle?</label>
+                                <textarea placeholder="Otupění, pocit prázdna, nemožnost se pohnout nebo mluvit..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Proč jsem se potřebovala "vypnout"?</label>
+                                <textarea placeholder="Co bylo v tu chvíli tak nesnesitelné, že jsem musela zmizet uvnitř?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reaction-page" id="fawn">
+        <div class="container">
+            <div class="card" style="border-color: var(--gold-primary);"> <div class="reaction-grid">
+                    <div class="reaction-left">
+                        <div class="reaction-icon icon-fawn">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h2>FAWN</h2>
+                        <h4 class="subtitle-h4">Usmiřuj (People Pleasing)</h4>
+                        <p style="margin-bottom: 30px; color: var(--text-muted); line-height: 1.8;">
+                            Říkáš ANO, když tvoje tělo křičí NE. Jsi milá, i když se k tobě druzí chovají špatně. Dáváš, dokud z tebe nic nezbyde. <strong>Protože jsi uvěřila: Když budu dokonalá a užitečná, nemůžou mě opustit.</strong>
+                        </p>
+
+                        <h4 style="margin-bottom: 15px; color: var(--gold-dark);">Jak to poznám u sebe?</h4>
+                        <ul class="signs-list">
+                            <li>Automaticky souhlasím, i když uvnitř nesouhlasím</li>
+                            <li>Potlačuji své potřeby, aby se druzí cítili dobře</li>
+                            <li>Panicky se bojím konfliktu, musím být "ta hodná"</li>
+                            <li>Pečuji o druhé tak moc, až jsem sama úplně vyčerpaná</li>
+                        </ul>
+                    </div>
+
+                    <div class="reaction-right">
+                        <div class="reflection-box" style="background: #FFFBF2;"> <h4><i class="far fa-compass" style="margin-right: 8px;"></i> MINI REFLEXE</h4>
+                            
+                            <div class="question">
+                                <label>Kdy jsem naposledy řekla ANO místo NE?</label>
+                                <textarea placeholder="Komu? V jaké situaci?"></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Co se dělo v mém těle, když jsem to "odkývala"?</label>
+                                <textarea placeholder="Stažený žaludek, tíha na hrudi, křečovitý úsměv, pocit zrady sebe sama..."></textarea>
+                            </div>
+
+                            <div class="question">
+                                <label>Co jsem tímto "hodným" chováním chránila?</label>
+                                <textarea placeholder="Vztah? Aby mě měli rádi? Abych nebyla 'špatná' nebo odmítnutá?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-container">
+                <div class="cta-image-wrapper">
+                    <img src="https://www.katerinaheallo.com/wp-content/uploads/2026/01/psychologicky.png" alt="Podcast Psycho-logicky Cover">
+                </div>
+                <div class="cta-content">
+                    <h2>Chceš vědět, jak z toho ven?</h2>
+                    <p>Pochopení je první krok. Ale jak to změnit v praxi? V podcastu <strong>Psycho-logicky</strong> jdeme do hloubky. Povím ti, proč říkáme ANO ze strachu a jak začít říkat laskavé ale pevné NE – bez pocitu viny.</p>
+                    
+                    <a href="https://open.spotify.com/episode/2FqGcPaqu7dK9OJYmK0TTr?si=GoQBVedMR42SpUXtpTM2eA" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i> Poslechnout si epizodu
+                    </a>
+
+                    <div class="cta-episode-info">
+                        <i class="fas fa-headphones-simple" style="margin-right: 8px;"></i>
+                        Doporučuji epizodu #84: Proč se bojím říct NE? (A co se stane, když to zkusím)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 80px 0 60px 0;">
+        <div class="container">
+            <div class="card" style="text-align: center; border: none; box-shadow: none; background: transparent;">
+                <h3 style="margin-bottom: 30px; font-size: 2rem; color: var(--gold-dark);">Co si z toho odnést?</h3>
+                <p style="margin-bottom: 25px; color: var(--text-muted); max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
+                    Tvoje stresové reakce nejsou tvoje selhání. Jsou to důkazy, že tvůj nervový systém fungoval přesně tak, jak měl – aby tě ochránil v době, kdy jsi neměla jiné nástroje.
+                </p>
+                <p style="margin-bottom: 20px; color: var(--text-dark); font-weight: 600; font-size: 1.2rem;">
+                    Ale dnes už nejsi to bezmocné dítě. Nemusíš v nich zůstat navždy.
+                </p>
+                
+                <div class="quote-box" style="margin: 50px auto; border-left-width: 8px; text-align: center; padding: 40px;">
+                    "Říct NE někomu jinému často znamená říct to nejláskyplnější ANO sama sobě."
+                </div>
+                
+                <p style="color: var(--gold-primary); font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-top: 40px;">
+                    S láskou k tvému růstu,<br>
+                    <strong style="font-size: 1.5rem; display: block; margin-top: 10px;">Kateřina ♡</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="brand">HEALLO® | PSYCHO-LOGICKY</span>
+        <div class="social-links">
+            <a href="https://www.instagram.com/myheallo/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.katerinaheallo.com" target="_blank"><i class="fas fa-globe"></i> Web</a>
+        </div>
+        <p class="copyright">
+            © 2026 HEALLO® | Všechna práva vyhrazena. Vytvořeno s láskou pro tvou duši.
+        </p>
+    </footer>
+
+    <script>
+        // Skript pro ukládání odpovědí (ponechán funkční)
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(textarea => {
+                // Generujeme ID na základě placeholderu, aby bylo konzistentní i po refreshi
+                const placeholderSlug = textarea.getAttribute('placeholder').substring(0, 15).replace(/[^a-z0-9]/gi, '');
+                const id = 'heallo_reflexe_' + placeholderSlug;
+                textarea.setAttribute('data-id', id);
+                
+                const saved = localStorage.getItem(id);
+                if(saved) textarea.value = saved;
+                
+                textarea.addEventListener('input', function() {
+                    localStorage.setItem(id, this.value);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
