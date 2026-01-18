@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proč nedokážu vydržet? | PSYCHO-LOGICKY</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* --- PALETA "LIGHT LUX" --- */
+            --gold-primary: #C5A059;
+            --gold-dark: #9E7D3D;
+            --text-dark: #2C2C2C;
+            --text-muted: #666666;
+            --bg-cream: #FDFBF7;
+            --bg-white: #FFFFFF;
+            --border-color: #E6E0D5;
+            --radius: 20px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 700; color: var(--gold-dark); }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; color: var(--gold-dark); }
+        h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; border-bottom: 2px solid var(--gold-primary); padding-bottom: 10px; display: inline-block;}
+        h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 1px; }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 50px 0; }
+        
+        .text-narrow { max-width: 650px; margin: 0 auto; text-align: center; color: var(--text-muted); }
+        img { max-width: 100%; height: auto; }
+
+        /* --- Tlačítka --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: white;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(197, 160, 89, 0.3); }
+
+        .btn-outline {
+            background: white;
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+        }
+        .btn-outline:hover { background: var(--gold-primary); color: white; }
+
+        /* --- Hero --- */
+        .hero { padding: 60px 0 40px 0; text-align: center; }
+        .hero-img {
+            width: 220px; border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
+            margin: 0 auto 30px auto; display: block;
+            border: 1px solid var(--gold-primary);
+        }
+
+        /* --- Podcast Grid --- */
+        .card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); 
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-3px); border-color: var(--gold-primary); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .podcast-item { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .podcast-icon { 
+            width: 60px; height: 60px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin: 0 auto 15px auto; color: white;
+        }
+
+        /* --- Audio Player Styling --- */
+        .audio-container {
+            background: #FAFAFA;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        audio { width: 100%; margin-top: 25px; }
+        audio::-webkit-media-controls-panel { background-color: #FDFBF7; }
+
+        /* --- SOS Card --- */
+        .sos-card {
+            background: var(--bg-white);
+            padding: 50px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            margin: 40px 0;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .sos-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark));
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .sos-header { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold-dark); margin-bottom: 10px; font-weight: 700; }
+        .sos-subheader { text-align: center; font-size: 1.3rem; color: var(--gold-primary); margin-bottom: 30px; font-weight: 600; font-family: 'Playfair Display', serif; }
+        
+        /* --- Tracker Section --- */
+        .tracker-section { background-color: #F2F0EB; padding: 50px 0; }
+        .tracker-container {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        .tracker-input-box { margin: 30px 0; }
+        .tracker-input-box input {
+            width: 100%; padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .tracker-input-box input:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 5px rgba(197, 160, 89, 0.2); }
+
+        .tracker-grid {
+            display: grid; grid-template-columns: repeat(7, 1fr); gap: 15px; margin-top: 30px;
+        }
+        .day-box {
+            background: #F9F7F3;
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 20px 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .day-box:hover { border-color: var(--gold-primary); transform: translateY(-3px); }
+        .day-box.completed {
+            background: rgba(197, 160, 89, 0.15);
+            border-color: var(--gold-primary);
+        }
+        .day-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 5px; }
+        .checkmark { font-size: 1.5rem; color: var(--gold-primary); display: none; }
+        .day-box.completed .checkmark { display: block; }
+
+        .reset-btn {
+            background: transparent; border: 2px solid var(--gold-primary); color: var(--gold-primary);
+            padding: 10px 25px; border-radius: 50px; cursor: pointer;
+            font-family: 'Montserrat', sans-serif; font-weight: 600; margin-top: 30px;
+            transition: all 0.3s ease; text-transform: uppercase; font-size: 0.85rem;
+        }
+        .reset-btn:hover { background: var(--gold-primary); color: white; }
+
+        /* --- Quote --- */
+        .quote {
+            background: #F9F7F3;
+            border-left: 5px solid var(--gold-primary);
+            padding: 35px 40px; margin: 50px 0;
+            font-style: italic; font-size: 1.25rem;
+            color: var(--gold-dark); font-family: 'Playfair Display', serif;
+        }
+        .quote-author { text-align: right; margin-top: 20px; font-size: 1rem; color: var(--text-muted); font-style: normal; font-family: 'Montserrat', sans-serif; }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 50px 0; background: #1A1A1A; color: white; margin-top: 80px; }
+        footer p { color: #BBB; }
+        footer a { color: var(--gold-primary); text-decoration: none; margin: 0 15px; }
+        footer a:hover { color: white; }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+            .tracker-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .sos-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Sekce -->
+    <section class="hero">
+        <div class="container">
+            <img src="https://www.katerinaheallo.com/wp-content/uploads/2026/01/psychologicky.png" alt="Psycho-logicky Podcast" class="hero-img">
+            <h1>Proč nedokážu vydržet?<br><span style="font-weight: 400; font-size: 1.4rem; font-style: italic; color: #999;">Satir Model, neurověda a lež o slabé vůli</span></h1>
+            <p class="text-narrow">
+                Není to vaše lenost. Je to fyzika mozku. Dneska si povíme o Chaosu, "svalu vůle" a o tom, proč každý nový diář končí v druhém týdnu.
+            </p>
+        </div>
+    </section>
+
+    <!-- Podcasty Grid -->
+    <div class="container" style="margin-top: -20px;">
+        <div class="grid-2">
+            <div class="card podcast-item">
+                <div class="podcast-icon" style="background: #1DB954;"><i class="fab fa-spotify"></i></div>
+                <h4 style="color: var(--text-dark);">Veřejná epizoda</h4>
+                <p style="font-size:0.9rem; margin-bottom: 20px; color: #666;">Satir Model Změny a neurověda nudy.</p>
+                
+                <!-- 1. MÍSTO PRO SPOTIFY ODKAZ -->
+                <a href="https://open.spotify.com/episode/4hHab5QDHbYq56ng2NiEO8?si=x_DPrWWLTQW8P_nt2yxCag" target="_blank" class="btn btn-outline" style="border-color: #1DB954; color: #1DB954;">
+                    <i class="fas fa-play" style="margin-right: 8px;"></i> Přehrát na Spotify
+                </a>
+            </div>
+
+            <div class="card podcast-item" style="border: 2px solid var(--gold-primary);">
+                <div class="podcast-icon" style="background: var(--gold-primary);"><i class="fas fa-star"></i></div>
+                <h4 style="color: var(--gold-dark);">Bonus pro předplatitele</h4>
+                <p style="font-size:0.9rem; margin-bottom: 20px; color: #666;">Parts Party, aMCC a Protokol Micro-Sucks.</p>
+                
+                <!-- 2. MÍSTO PRO HERO HERO / BONUS ODKAZ -->
+                <a href="https://soundcloud.com/katerina-heallo/bonus-4-proc-nedokazu-vydrzet-aneb-neuroveda-konzistence/s-knxAW7XVjqZ?si=ba9574c3b84441399fd2dac31424657b&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-headphones" style="margin-right: 8px;"></i> Přehrát Bonus
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Audio Meditace -->
+        <section>
+            <h2><i class="fas fa-headphones" style="color: var(--gold-primary);"></i> Audio Meditace</h2>
+            <p class="text-narrow" style="margin-bottom: 30px;">Vedená 8minutová meditace podle techniky Parts Party Virginie Satirové.</p>
+            
+            <div class="card">
+                <h3 style="display: block; border: none; margin-bottom: 10px; text-align: center;">Dialog s Prokrastinátorem</h3>
+                <p style="text-align: center; color: #666;">Naučíte se mluvit s částí, která vás "sabotuje" - a zjistíte, že to není váš nepřítel, ale <strong>ochránce</strong>.</p>
+                
+                <div class="audio-container">
+                    <h4 style="margin-top: 0; text-transform: none; letter-spacing: 0;">🎧 Najděte si klidné místo a nechte se vést</h4>
+                    <audio controls>
+                        <!-- 3. MÍSTO PRO MP3 SOUBOR -->
+                        <source src="https://www.katerinaheallo.com/wp-content/uploads/2026/01/hhgf5487.mp3" type="audio/mpeg">
+                        Váš prohlížeč nepodporuje audio přehrávač.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOS Karta (Tlačítko) -->
+        <section>
+            <h2><i class="fas fa-life-ring" style="color: var(--gold-primary);"></i> SOS Karta</h2>
+            
+            <div class="sos-card">
+                <div class="sos-header">🆘</div>
+                <div class="sos-subheader">Jsem v Chaosu</div>
+                
+                <p style="margin-bottom: 30px; color: var(--text-muted);">
+                    Stáhněte si graficky zpracovanou kartu s instrukcemi, co dělat, když se ocitnete v Chaosu.
+                </p>
+
+                <!-- 4. MÍSTO PRO PDF SOUBOR -->
+                <a href="https://pdf.katerinaheallo.com/hhgf5487" target="_blank" class="btn btn-primary" style="padding: 20px 40px; font-size: 1.1rem;">
+                    <i class="fas fa-file-pdf" style="margin-right: 10px;"></i> Stáhnout SOS kartu (PDF)
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tracker Section -->
+    <section class="tracker-section">
+        <div class="container">
+            <h2 style="color: var(--gold-dark);"><i class="fas fa-chart-line" style="color: var(--gold-primary);"></i> Týdenní Micro-Sucks Tracker</h2>
+            
+            <div class="tracker-container">
+                <p style="margin-bottom: 25px; text-align: center; color: var(--text-muted);">
+                    <strong>Protokol:</strong> Vyberte si JEDNU mikro-nepříjemnost na tento týden. Každý den ji udělejte. Kliknutím na den označte splnění.
+                </p>
+                
+                <div class="tracker-input-box">
+                    <label for="microSuckActivity" style="font-weight: 700; color: var(--text-dark); display: block; margin-bottom: 10px;">
+                        <i class="fas fa-snowflake" style="color: var(--gold-primary);"></i> 
+                        Moje Micro-Suck aktivita:
+                    </label>
+                    <input type="text" id="microSuckActivity" placeholder="Např: Studená sprcha 30 sekund / Jedna věta do deníku...">
+                </div>
+
+                <div class="tracker-grid" id="trackerGrid">
+                    <!-- JavaScript vygeneruje dny -->
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="reset-btn" onclick="resetTracker()">
+                        <i class="fas fa-redo"></i> Resetovat týden
+                    </button>
+                </div>
+
+                <div style="background: #FFF9E6; border: 1px solid #F0E4B8; border-radius: 10px; padding: 20px; margin-top: 30px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    <i class="fas fa-brain" style="color: var(--gold-primary);"></i> 
+                    <strong>Pamatujte:</strong> aMCC (sval vůle) roste jen při překonání odporu. Ne při radosti z aktivity.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Quote -->
+        <div class="quote">
+            "Transformation requires going through the Chaos."
+            <div class="quote-author">— Virginia Satirová</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 15px; font-family: 'Playfair Display', serif; font-size: 1.1rem;">S láskou, Kateřina ♡ | PSYCHO-LOGICKY</p>
+        <div>
+            <a href="https://www.instagram.com/myheallo/" target="_blank">Instagram</a>
+            <a href="https://www.katerinaheallo.com" target="_blank">Web</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.85rem; color: #777;">
+            © 2026 HEALLO®
+        </p>
+    </footer>
+
+    <script>
+        // --- Tracker Logic ---
+        const days = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'];
+        const grid = document.getElementById('trackerGrid');
+
+        days.forEach((day, index) => {
+            const dayBox = document.createElement('div');
+            dayBox.className = 'day-box';
+            dayBox.innerHTML = `
+                <div class="day-label">${day}</div>
+                <div class="checkmark">✓</div>
+            `;
+            dayBox.onclick = () => toggleDay(index);
+            grid.appendChild(dayBox);
+        });
+
+        function loadTracker() {
+            const saved = localStorage.getItem('microSucksTracker');
+            const activity = localStorage.getItem('microSuckActivity');
+            if (activity) document.getElementById('microSuckActivity').value = activity;
+            if (saved) {
+                const completed = JSON.parse(saved);
+                completed.forEach(index => grid.children[index].classList.add('completed'));
+            }
+        }
+
+        function toggleDay(index) {
+            grid.children[index].classList.toggle('completed');
+            saveTracker();
+        }
+
+        function saveTracker() {
+            const completed = [];
+            Array.from(grid.children).forEach((box, index) => {
+                if (box.classList.contains('completed')) completed.push(index);
+            });
+            localStorage.setItem('microSucksTracker', JSON.stringify(completed));
+        }
+
+        document.getElementById('microSuckActivity').addEventListener('input', (e) => {
+            localStorage.setItem('microSuckActivity', e.target.value);
+        });
+
+        function resetTracker() {
+            if (confirm('Opravdu chcete resetovat týdenní tracker?')) {
+                localStorage.removeItem('microSucksTracker');
+                Array.from(grid.children).forEach(box => box.classList.remove('completed'));
+            }
+        }
+
+        loadTracker();
+    </script>
+
+</body>
+</html>
